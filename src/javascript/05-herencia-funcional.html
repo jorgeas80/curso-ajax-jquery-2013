@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Herencia  por prototipos</title>
+	<script>
+	function A() {
+		var a = "Propiedad Privada de A";
+		var metodoPrivado = function(s) {
+			return "[ Desde A : metodoPrivado() : s="+s.toUpperCase()+" ]";
+		};
+		var self = {};
+		self.metodoPublico = function() {
+			console.log("Desde A : metodoPublico() : a="+metodoPrivado(a));
+		};
+		return self;
+	}
+
+	function B() {
+		// B extends A
+		var self = A();
+		self.b = "Propiedad Pública de B";
+		self.otroMetodoPublico = function() {
+			console.log("Desde B : otroMetodoPublico() : b="+this.b); // da error
+		};
+		return self;
+	}
+
+
+	function C() {
+		// C extends B
+		var self = B();
+		self.b = "SOBRESCRIBO Propiedad Pública de B en el objeto C";
+		self.otroMetodoPublico = function() {
+			console.log("Desde C : SOBRESCRIBO otroMetodoPublico() : a="+this.a); // da error
+		};
+		return self;
+	}
+	
+	console.log("==== A ====");
+	
+	var instanciaA = new A();
+	console.log("a="+instanciaA.a); // a=undefined
+	//instanciaA.metodoPrivado(); da error
+	instanciaA.metodoPublico(); 
+	// Desde A : metodoPublico() : a=[ Desde A : metodoPrivado() : s=PROPIEDAD PRIVADA DE A ] 
+
+
+	console.log("==== B ====");
+	
+	var instanciaB = new B();
+	console.log("a="+instanciaB.a); // a=undefined
+	instanciaB.metodoPublico();
+	// Desde A : metodoPublico() : a=[ Desde A : metodoPrivado() : s=PROPIEDAD PRIVADA DE A ] 
+	console.log("b="+instanciaB.b); // a=Propiedad Pública de B
+	instanciaB.otroMetodoPublico(); // Desde B : otroMetodoPublico() : b=Propiedad Pública de B 
+	
+	console.log("==== C ====");
+	
+	var instanciaC = new C();
+	console.log("a="+instanciaB.a); // a=undefined
+	instanciaC.metodoPublico();
+	// Desde A : metodoPublico() : a=[ Desde A : metodoPrivado() : s=PROPIEDAD PRIVADA DE A ] 
+	console.log("b="+instanciaC.b); // b=SOBRESCRIBO Propiedad Pública de B en el objeto C 
+	instanciaC.otroMetodoPublico(); // Desde C : SOBRESCRIBO otroMetodoPublico() : a=undefined
+	</script>
+</head>
+<body>
+	<h2>Herencia por prototipos</h2>
+</body>
+</html>

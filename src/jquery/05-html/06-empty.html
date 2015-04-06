@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $("p").empty();
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <p style="width:200px;height:200px;background-color:yellow">This is a paragraph.</p>
+    <button>Remove content of the p element</button>
+  </body>
+
+</html>

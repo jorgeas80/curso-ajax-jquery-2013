@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Size control with jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#getHeight").click(function(){
+        alert("Image height " + $("img").width());
+      });
+      $("#setHeight").click(function(){
+        $("img").height(200);
+      });
+      $("#getWidth").click(function(){
+        alert("Image width " + $("img").width());
+      });
+      $("#setWidth").click(function(){
+        $("img").width(300);
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>Size control with jQuery</h1>
+    <img src="../logo-jquery.png" />
+    <br />HEIGHT:
+    <br /><button id="getHeight">Return the height of the image</button>
+    <br /><button id="setHeight">Change the height of the image</button>
+    <br />WIDTH:
+    <br /><button id="getWidth">Return the width of the image</button>
+    <br /><button id="setWidth">Change the width of the image</button>
+  </body>
+
+</html>

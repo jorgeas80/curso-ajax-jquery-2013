@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Class mangement in jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#add").click(function(){
+        $('p').addClass("color");
+      });
+      $("#remove").click(function(){
+        $("p").removeClass("color");
+      });
+      $("#toggleClass").click(function(){
+        $("p").toggleClass("color");
+      });
+      $("#hasClass").click(function(){
+        alert("#withClass="+$("#withClass").hasClass("color")+"\n"+
+              "#withoutClass="+$("#withoutClass").hasClass("color"));
+      });
+    });
+    </script>
+    <style type="text/css">
+    .color {
+      color:blue;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Class mangement in jQuery</h1>
+    <p id="withClass" class="color">This is a paragraph.</p>
+    <p id="withoutClass">This is another paragraph.</p>
+    <button id="add">Add class "color" to p elements</button><br />
+    <button id="remove">Remove class "color" to p elements</button><br />
+    <button id="toggleClass">Toggle class "color" for p elements</button><br />
+    <button id="hasClass">Does any p element have a "color" class?</button>
+  </body>
+
+</html>

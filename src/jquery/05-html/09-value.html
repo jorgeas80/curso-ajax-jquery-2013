@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#get").click(function(){
+        $("input:text").each(function(){
+          alert($(this).val());
+        });
+      });
+      $("#set").click(function(){
+        $("input:text").val("Glenn Quagmire");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    Firstname: <input type="text" name="fname" value="Peter" /><br />
+    Lastname: <input type="text" name="lname" value="Griffin" /><br /><br />
+    <button id="get">Return the value of the first text field</button>
+    <button id="set">Set the value of the text field</button>
+  </body>
+
+</html>

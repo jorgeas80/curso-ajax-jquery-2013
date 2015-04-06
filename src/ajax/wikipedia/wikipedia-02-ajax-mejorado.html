@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buscador Wikipedia con jQuery y AJAX</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var cache = {};
+        var inputSearch = $("#search");
+        var result = $("#result");
+
+        $("#button").click(function(){
+            
+            var search = $("#search").val();
+            
+            if ( search in cache ) {
+
+                console.log("utilizo la caché");
+                render(cache[search]);
+
+            } else {
+
+                console.log("hago petición ajax");
+
+                var url = "http://es.wikipedia.org/w/api.php?"
+                            +"format=json&srprop=snippet|titlesnippet"
+                            +"&action=query&list=search&srsearch="+search;
+                console.log(url);
+
+                inputSearch.addClass("loading");
+
+                $.ajax({
+                    url: url,
+                    global: true,
+                    dataType: 'jsonp',
+                    success: function(data) {
+                        cache[search]=data;
+                        inputSearch.removeClass("loading");
+                        render(data);
+                    },
+                    error: function() {
+                        inputSearch.removeClass("loading");
+                        result.text('Error loading data...');
+                    }
+                });
+
+            }
+        });
+
+        var render = function(data) {
+            var numPages = data.query.searchinfo.totalhits;
+            result.text("Número de resultados: " + numPages);
+            var pages = data.query.search;
+            $.each(pages, function(index, page) {
+                result.append("<p><a href='http://es.wikipedia.org/wiki/"
+                    +page.title+"'>"
+                    +page.titlesnippet+"</a></p>");
+                result.append("<p>"+page.snippet+"</p>");
+            })
+        }
+    });
+    </script>
+    <style type="text/css">
+    .loading {
+        color:blue;
+        background:url("../images/loading-progreso.gif") repeat;
+    }
+    .searchmatch {
+        font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <h2>Buscador Wikipedia con jQuery y AJAX</h2>
+    <p><input id="search" type="text"><button id="button">Search</button><p>
+    <div id="result"></div>
+</body>
+</html>

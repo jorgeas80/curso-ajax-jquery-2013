@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>jQuery Mobile - Navegación</title> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../jquery.mobile.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery.mobile.js"></script>
+  </head>
+  <body>
+
+    <div data-role="page" id="one" data-title="Uno">
+      <div data-role="header" data-position="fixed">
+        <h1>Uno</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <p><a href="#two">dos</a></p>
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <h4>Pie</h4>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="two" data-title="Dos">
+      <div data-role="header" data-position="fixed">
+        <h1>Dos</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <p><a href="#one">volver</a></p>
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <h4>Pie</h4>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+  </body>
+</html>

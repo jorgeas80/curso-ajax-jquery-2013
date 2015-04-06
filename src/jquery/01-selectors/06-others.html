@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Selectors Others</title>
+	<script src="../jquery.js"></script>
+	<script>
+    $(document).ready(function(){
+      function aniDiv(){
+        $("div:eq(0)").animate({width:"50%"},"slow");
+        $("div:eq(0)").animate({width:"100%"},"slow",aniDiv);
+      }
+      aniDiv();
+      $("a").mouseover(function(){
+        if ($(this).attr("href")===":hidden") {
+          $($(this).attr("href")).show();
+        }
+        $($(this).attr("href")).toggleClass("selected");
+      });
+      $("a").mouseout(function(){
+        if ($(this).attr("href")===":hidden") {
+          $("#hidden").hide();
+        }
+        $($(this).attr("href")).toggleClass("selected");
+      });
+    });
+	</script>
+  <style>
+  .selected {
+    background: red;
+  }
+  </style>
+</head>
+
+<body>
+	<h1>jQuery Selectors Others</h1>
+
+    <a href="p:contains(am)">p:contains(am)</a>
+    <a href=":disabled">:disabled</a>
+    <a href=":empty">:empty</a>
+    <a href=":enabled">:enabled</a>
+    <a href=":header">:header</a>
+    <a href="p:visible">p:visible</a>
+    <a href="div:animated">div:animated</a>
+    <a href=":hidden">:hidden</a>
+
+    <h2>EXAMPLES</h3>
+
+    <div style="border: 1px solid black;">Animated DIV</div>
+
+    <h3>User</h3>
+
+    <p>
+      Name: <input type="text" name="user" />
+      ID:<input type="text" name="id" disabled="disabled" />
+    </p>
+
+    <table border="1">
+      <tr><th>Country</th><th>Capital</th></tr>
+      <tr><td>Spain</td><td></td></tr>
+      <tr><td></td><td>Paris</td></tr>
+      <tr><td>Italy</td><td>Rome</td></tr>
+    </table>
+
+    <p id="hidden" style="display: none; background: blue;">This paragraph is hidden</p>
+
+</body>
+
+</html>

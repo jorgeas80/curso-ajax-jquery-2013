@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Selectors Index</title>
+	<script src="../jquery.js"></script>
+	<script>
+    $(document).ready(function(){
+      $("a").mouseover(function(){
+        $($(this).attr("href")).toggleClass("selected");
+      });
+      $("a").mouseout(function(){
+        $($(this).attr("href")).toggleClass("selected");
+      });
+    });
+	</script>
+  <style>
+  .selected {
+    background: red;
+  }
+  </style>
+</head>
+
+<body>
+	<h1>jQuery Selectors Index</h1>
+
+    <p>
+      <a href="tr:first">tr:first</a> |
+      <a href="tr:last">tr:last</a><br />
+
+      <a href="tr:even">tr:even</a> |
+      <a href="tr:odd">tr:odd</a><br />
+
+      <a href="tr:gt(2)">tr:gt(2)</a> |
+      <a href="tr:eq(2)">tr:eq(2)</a> |
+      <a href="tr:lt(2)">tr:lt(2)</a><br />
+
+      <a href="table tr:first-child">table tr:first-child</a> |
+      <a href="table tr:last-child">table tr:last-child</a>
+    </p>
+
+    <table border="1">
+      <tr><th>Country</th><th>Capital</th></tr>
+      <tr><td>Spain</td><td>Madrid</td></tr>
+      <tr><td>France</td><td>Paris</td></tr>
+      <tr><td>Italy</td><td>Rome</td></tr>
+      <tr><td>Germany</td><td>Berlin</td></tr>
+    </table>
+
+    <table border="1">
+      <tr><th>Colour</th><th>Color</th></tr>
+      <tr><td>Red</td><td>Rojo</td></tr>
+      <tr><td>Green</td><td>Verde</td></tr>
+      <tr><td>Blue</td><td>Azul</td></tr>
+      <tr><td>Grey</td><td>Gris</td></tr>
+    </table>
+
+</body>
+
+</html>

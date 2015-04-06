@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#after").click(function(){
+        $("p").after("<span>Hello world!</span>").css("background","red");
+      });
+      $("#insertAfter").click(function(){
+        $("<span>Hello world!</span>").insertAfter("p").css("background","red");
+      });
+      $("#append").click(function(){
+        $("p").append("<b>Hello world!</b>").css("background","red");
+      });
+      $("#appendTo").click(function(){
+        $("<b>Hello World!</b>").appendTo("p").css("background","red");
+      });  
+    });
+    </script>
+  </head>
+
+  <body>
+    <h2>This is a heading</h2>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <br />
+    <button id="after">Insert span element after each p element (after)</button>
+    <button id="insertAfter">Insert span element after each p element (insertAfter)</button>
+    <br />
+    <button id="append">Insert content at the end of each p element (append)</button>
+    <button id="appendTo">Insert content at the end of each p element (appendTo)</button>
+  </body>
+
+</html>

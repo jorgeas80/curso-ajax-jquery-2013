@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#replaceWith").click(function(){
+        $("h2").replaceWith("<p>Hello world!</p>").css("background","red");
+      });
+      $("#replaceAll").click(function(){
+        $("<p>Hello world!</p>").replaceAll("h3").css("background","red");
+      });
+      $("#getHtml").click(function(){
+        var str = "";
+        $("p").each(function(i){
+          str += i + "->"+ $(this).html() + "\n";
+        });
+        alert(str);
+      });
+      $("#setHtml").click(function(){
+        $("p").html("Hello <b>world!</b>");
+      });
+      $("#getText").click(function(){
+        var str = "";
+        $("p").each(function(i){
+          str += i + "->"+ $(this).text() + "\n";
+        });
+        alert(str);
+      });
+      $("#setText").click(function(){
+        $("p").text("Hello <b>world</b>!");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h2>This is a heading</h2>
+    <h3>This is another heading</h3>
+    <p>This is a paragraph.</p>
+    <p>This is another paragraph.</p>
+    <button id="replaceWith">Replace the 'h2' elements with a paragraph (replaceWith)</button>
+    <button id="replaceAll">Replace the 'h3' elements with a paragraph (replaceAll)</button>
+    <br />
+    <button id="getHtml">Get the content of the p element (html)</button>
+    <button id="setHtml">Set the content of the p element (html)</button>
+    <br />
+    <button id="getText">Get the text content of the p element (text)</button>
+    <button id="setText">Set the text content of the p element (text)</button>
+  </body>
+
+</html>

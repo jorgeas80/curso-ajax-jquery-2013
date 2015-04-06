@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("input").change(function(){
+        $(this).css("background-color","#FFFFCC");
+      });
+      $("button").click(function(){
+        $("input").change();
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <button>Trigger change event for input field</button>
+    <p>Enter your name: <input type="text" value="hola" /></p>
+  </body>
+
+</html>

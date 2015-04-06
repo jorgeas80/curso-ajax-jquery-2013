@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $(document).mousemove(function(e){ 
+        $("span").text("X: " + e.pageX + ", Y: " + e.pageY); 
+      });
+      $("#buttonClick").click(function(){
+        $("#paragraphDoubleClick").slideToggle();
+      });
+      $("#paragraphDoubleClick").dblclick(function(){
+        $("#buttonClick").click();
+      });
+      $("#buttonDoubleClick").dblclick(function(){
+        $("#paragraphClick").slideToggle();
+      });
+      $("#paragraphClick").click(function(){
+        $("#buttonDoubleClick").dblclick();
+      });
+      $("#button").mouseup(function(){
+        $("#buttonEvent").append("up ");
+      });
+      $("#button").mousedown(function(){
+        $("#buttonEvent").append("down ");
+      });
+      $("#up").mouseover(function(){
+        $("#button").mouseup();
+      });
+      $("#down").mouseover(function(){
+        $("#button").mousedown();
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <p>The mouse is at: <span></span></p>
+    <button id="buttonClick">Click to toggle</button>
+    <p id="paragraphDoubleClick">Double click this paragraph to trigger the click event for the button.</p>
+    <br />
+    <button id="buttonDoubleClick">Double-click to toggle</button>
+    <p id="paragraphClick">Click this paragraph to trigger the dblclick event for the button.</p>
+    <br />
+    <button id="button">Click and release</button>
+    <p id="up" style="background-color: yellow">Mouse over to activate mouseup event</p>
+    <p id="down" style="background-color: red">Mouse over to activate mousedown event</p>
+    <p id="buttonEvent"></p>
+  </body>
+
+</html>

@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Selectors Basics</title>
+	<script src="../jquery.js"></script>
+	<script>
+	$(document).ready(function() {
+
+		$("#childs").click(function(){
+			$("body > p").toggleClass("selected");
+		});
+
+		$("#descendant").click(function(){
+			$("body p").toggleClass("selected");
+		});
+
+		$("#first-child").click(function(){
+			$("ul li:first-child").toggleClass("selected");
+		});
+
+		$("#last-child").click(function(){
+			$("ul li:last-child").toggleClass("selected");
+		});
+
+		$("#classAND").click(function(){
+			$(".name .friend").toggleClass("selected");
+		});
+
+		$("#classOR").click(function(){
+			$(".name, .friend").toggleClass("selected");
+		});
+	});
+	</script>
+	<style>
+	.selected {
+		background-color: red;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>jQuery Selectors Avanced</h1>
+    <p class="name">My name is <span class="friend">Donald</span></p>
+    <p>I live in Duckburg</p>
+    <p class="friend">My best friend is Mickey</p>
+    Is one your favourite?
+    <ul id="choose">
+      <li id="Pluto"><p>Pluto</p></li>
+      <li id="Minnie"><p>Minnie</p></li>
+    </ul>
+    And this others?
+    <ul id="choose">
+      <li id="Goofy"><p>Goofy</p></li>
+      <li id="Mickey"><p>Mickey</p></li>
+    </ul>
+    <br /><button id="childs">Select all 'body' paragraphs childs</button>
+    <br /><button id="descendant">Select all 'body' paragraphs descendant</button>
+    <br /><button id="first-child">Select the first 'li' of all 'ul'</button>
+    <br /><button id="last-child">Select the last 'li' of all 'ul'</button>
+    <br /><button id="classAND">Select the elements with 'name' AND 'fiend' class </button>
+    <br /><button id="classOR">Select the elements with 'name' OR 'fiend' class </button>
+</body>
+
+</html>

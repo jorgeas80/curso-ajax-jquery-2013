@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery AJAX - Prevent Access-Control-Allow-Origin</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+        
+        var result = $("#result");
+        
+        $(document).ajaxStart(function(){
+            log("-->ajaxStart");
+        });
+        $(document).ajaxComplete(function(){
+            log("-->ajaxComplete");
+        });
+        $(document).ajaxError(function(){
+            log("-->ajaxError");
+        });
+
+        $("#get-json-error").click(function(){
+
+            ajax("http://localhost:3000/get-json-without-header","json");
+        });
+
+        $("#get-json-ok").click(function(){
+
+            ajax("http://localhost:3000/get-json-with-header","json");
+        });
+
+        $("#get-jsonp").click(function(){
+
+            ajax("http://localhost:3000/get-jsonp","jsonp");
+        });
+
+        var ajax = function(url, dataType) {
+
+            result.empty();
+
+            log(url);
+            log("dataType="+dataType);
+
+            $.ajax({
+                url: url,
+                dataType: dataType,
+                success: function(data) {
+
+                    log("data.hola="+data.hola);
+                    log("data.mundo="+data.mundo);
+                },
+                error: function() {
+
+                    log('Error loading data...');
+                }
+            });
+        }
+
+        var log = function(message) {
+            result.append(message+"<br/>");
+            console.log(message);
+        }
+
+    });
+    </script>
+</head>
+<body>
+    <h2>jQuery AJAX - Prevent Access-Control-Allow-Origin</h2>
+    <button id="get-json-error">JSON - WITHOUT HEADER - ERROR</button>
+    <br/>
+    <button id="get-json-ok">JSON - WITH HEADER - OK</button>
+    <br/>
+    <button id="get-jsonp">JSONP - WITHOUT HEADER - OK BUT WITHOUT XmlHttpRequest</button>
+    <div id="result"></div>
+</body>
+</html>

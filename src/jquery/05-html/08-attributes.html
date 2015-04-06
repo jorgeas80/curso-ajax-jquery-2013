@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#get").click(function(){
+        alert("Image width " + $("img").attr("width"));
+      });
+      $("#set").click(function(){
+        $("img").attr("width", "200");
+      });
+      $("#removeAttrStyle").click(function(){
+        $("p").removeAttr("style");
+      });
+      $("#removeAttrWidth").click(function(){
+        $("p").removeAttr("width");
+      });
+       $("#getData").click(function(){
+        alert("data-width " + $("[data-width]").data("width"));
+      });
+      $("#setData").click(function(){
+        $("[data-width]").data("width", "200");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <p style="font-size:120%;color:red" data-width="100">This is a paragraph.</p>
+    <img src="../logo-jquery.png" />
+    <br /><button id="get">Return the width attribute of the image</button>
+    <br /><button id="set">Change the width attribute of the image</button>
+    <br /><button id="removeAttrStyle">Remove the style attribute from all p elements</button>
+    <br /><button id="removeAttrWidth">Remove the width attribute from all p elements</button>
+    <br /><button id="getData">Return the data-width of the p</button>
+    <br /><button id="setData">Change the data-width of the p</button>
+  </body>
+
+</html>

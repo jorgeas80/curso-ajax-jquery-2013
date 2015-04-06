@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Selectors Forms</title>
+	<script src="../jquery.js"></script>
+	<script>
+    $(document).ready(function(){
+      $("a").mouseover(function(){
+        $($(this).attr("href")).wrap("<span style='background-color:red' />");
+      });
+      $("a").mouseout(function(){
+        $($(this).attr("href")).unwrap();
+      });
+    });
+	</script>
+
+</head>
+
+<body>
+	<h1>jQuery Selectors Attributes</h1>
+
+    <a href=":button">:button</a>
+    <a href=":checkbox">:checkbox</a>
+    <a href=":file">:file</a>
+    <a href=":image">:image</a>
+    <a href=":input">:input</a>
+    <a href=":password">:password</a>
+    <a href=":radio">:radio</a>
+    <a href=":reset">:reset</a>
+    <a href=":submit">:submit</a>
+    <a href=":text">:text</a>
+
+    <form action="">
+      <p>Name: <input type="text" name="user" />
+        Password: <input type="password" name="password" /></p>
+      <p>File: <input type="file" name="myfile" /></p>
+      <p><input type="image" src="../logo-jquery.png" /></p>
+      <p>Male: <input type="radio" name="sex" value="m" />
+        Female: <input type="radio" name="sex" value="f" /></p>
+      <p>Bike: <input type="checkbox" name="vehicle" value="Bike" />
+      Car: <input type="checkbox" name="vehicle" value="Car" />
+      Airplane: <input type="checkbox" name="vehicle" value="Airplane" /></p>
+      <p><button type="button">Button</button>
+      <input type="button" value="Type button" />
+      <input type="reset" value="Reset" />
+      <input type="submit" value="Submit" /></p>
+    </form>
+
+</body>
+
+</html>

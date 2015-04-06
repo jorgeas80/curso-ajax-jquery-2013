@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#callback").click(function(){
+        $("p").toggle("slow",function(){
+          alert("The paragraph is now toggled");
+        });
+      });
+      $("#nocallback").click(function(){
+        $("p").toggle("slow");
+        alert("The paragraph is now toggled");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <button id="callback">With Callback</button>
+    <button id="nocallback">Without Callback</button>
+    <p>This is a paragraph with little content.</p>
+  </body>
+
+</html>

@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Fade elements with jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#fadeIn").click(function(){
+        $("div").fadeIn("slow");
+      });
+      $("#fadeOut").click(function(){
+        $("div").fadeOut("slow");
+      });
+      $("#fadeTo0").click(function(){
+        $("div").fadeTo("slow",0);
+      });
+      $("#fadeTo50").click(function(){
+        $("div").fadeTo("slow",0.5);
+      });
+      $("#fadeTo100").click(function(){
+        $("div").fadeTo("slow",1);
+      });
+      $("#fadeToggle").click(function(){
+        $("div").fadeToggle("slow");
+      });
+    });
+    </script>
+    <style> 
+    div {
+      text-align:center;
+      background:#e5eecc;
+      border:solid 1px #c3c3c3;
+      height:50%;
+      width:100%;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Fade elements with jQuery</h1>
+    <button id="fadeIn">Click to FadeIn</button>
+    <button id="fadeOut">Click to FadeOut</button>
+    <button id="fadeToggle">Click to FadeToggle</button>
+    <br />
+    <button id="fadeTo0">Click to FadeTo 0</button>
+    <button id="fadeTo50">Click to FadeTo 50</button>
+    <button id="fadeTo100">Click to FadeTo 100</button>
+    <div>jQuery is cool</div>
+  </body>
+
+</html>

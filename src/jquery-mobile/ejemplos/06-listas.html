@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>jQuery Mobile - Listas</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../jquery.mobile.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery.mobile.js"></script>
+  </head>
+  <body>
+
+    <div data-role="page" id="one" data-title="Listas">
+      <div data-role="header" data-position="fixed">
+        <h1>Listas</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <p><a href="#list">Lista</a></p>
+        <p><a href="#numbered">Numerada</a></p>
+        <p><a href="#nested">Anidada</a></p>
+        <p><a href="#divided">Dividida</a></p>
+        <p><a href="#filtered">Con filtro</a></p>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="list" data-title="Lista">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Lista</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ul data-role="listview">
+          <li><a href="#one">Uno</a></li>
+          <li><a href="#two">Dos</a></li>
+          <li><a href="#three">Tres</a></li>
+        </ul>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="numbered" data-title="Numerada">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Numerada</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ol data-role="listview">
+          <li><a href="#one">Uno</a></li>
+          <li><a href="#two">Dos</a></li>
+          <li><a href="#three">Tres</a></li>
+        </ol>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="nested" data-title="Anidada">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Anidada</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ol data-role="listview">
+          <li>
+            <a href="#one">Uno</a>
+            <ul data-role="listview">
+              <li><a href="#one">Uno y uno</a></li>
+              <li><a href="#two">Uno y dos</a></li>
+              <li><a href="#three">Uno y tres</a></li>
+              <li><a href="#four">Uno y cuatro</a></li>
+            </ul>
+          </li>
+          <li><a href="#two">Dos</a></li>
+          <li><a href="#three">Tres</a></li>
+        </ol>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="divided" data-title="Dividida">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Dividida</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ul data-role="listview">
+          <li data-role="list-divider">Unidades</li>
+          <li><a href="#one">Uno</a></li>
+          <li><a href="#three">Cinco</a></li>
+          <li data-role="list-divider">Decenas</li>
+          <li><a href="#one">Diez</a></li>
+          <li><a href="#three">Cincuenta</a></li>
+          <li data-role="list-divider">Decenas</li>
+          <li><a href="#one">Cien</a></li>
+          <li><a href="#three">Quinientos</a></li>
+        </ul>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="filtered" data-title="Con filtro">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Con filtro</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ul data-role="listview" data-filter="true">
+          <li><a href="#one">Uno</a></li>
+          <li><a href="#three">Cinco</a></li>
+          <li><a href="#one">Diez</a></li>
+          <li><a href="#three">Cincuenta</a></li>
+          <li><a href="#one">Cien</a></li>
+          <li><a href="#three">Quinientos</a></li>
+        </ul>
+      </div><!-- /content -->
+    </div><!-- /page -->
+  </body>
+</html>

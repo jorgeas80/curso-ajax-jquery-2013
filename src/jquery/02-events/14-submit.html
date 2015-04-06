@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("form").submit(function(e){
+        alert("Submitted");
+      });
+      $("button").click(function(){
+        $("form").submit();
+      });  
+    });
+    </script>
+  </head>
+
+  <body>
+    <form name="input" action="" method="get">
+    First name: 
+    <input type="text" name="FirstName" value="Mickey" size="20">
+    <br />Last name: 
+    <input type="text" name="LastName" value="Mouse" size="20">
+    <br />
+    <input type="submit" value="Submit">
+    </form> 
+    <button>Activate submit event for the form field</button>
+  </body>
+
+</html>

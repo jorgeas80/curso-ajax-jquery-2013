@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>This</title>
+	<script>
+	var nombre = "Laura";
+	
+	var alba = {
+		nombre: "Alba",
+		edad: 15,
+		saludo: function() {
+			console.log(this.nombre)
+		}
+	}
+			
+	alba.saludo(); // alba
+	
+	var fn = alba.saludo;
+	fn(); // Laura
+	
+	var isabel = {
+		nombre: "Isabel"
+	}
+	
+	isabel.saludo = alba.saludo;
+	isabel.saludo(); // Isabel
+	
+	var adolfo = {
+		edad: 15
+	};
+	
+	adolfo.saludo = alba.saludo;
+	adolfo.saludo(); // undefined
+	</script>
+</head>
+<body>
+	<h2>This</h2>
+</body>
+</html>

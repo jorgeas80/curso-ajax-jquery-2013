@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Slide elements with jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#up").click(function(){
+        $("div").slideUp("slow");
+      });
+      $("#down").click(function(){
+        $("div").slideDown("fast");
+      });
+      $("#toggle").click(function(){
+        $("div").slideToggle(1000);
+      });
+    });
+    </script>
+    <style> 
+    div {
+      text-align:center;
+      background:#e5eecc;
+      border:solid 1px #c3c3c3;
+      height:50%;
+      width:100%;
+    }
+    </style>
+  </head>
+
+  <body>
+    <h1>Slide elements with jQuery</h1>
+    <div>jQuery is cool</div>
+    <button id="up">Slide Up slow</button>
+    <button id="down">Slide Down fast</button>
+    <button id="toggle">Slide Toggle (1000 millisecods)</button>
+  </body>
+
+</html>

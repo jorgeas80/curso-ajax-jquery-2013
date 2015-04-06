@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#wrapAll").click(function(){
+        $("p").wrapAll("<div></div>");
+      });
+      $("#unwrap").click(function(){
+        $("p").unwrap();
+      });
+      $("p").click(function(){
+        $(this).wrap("<div></div>");
+      });
+    });
+    </script>
+    <style type="text/css">
+    div{background-color:yellow;}
+    </style>
+  </head>
+
+  <body>
+    <h2>header</h2>
+    <p>This is a paragraph.</p>
+    <h3>Click in a paragraph to wrap a div element around it</h3>
+    <button id="wrapAll">Wrap a div element around all p elements</button>
+    <br />
+    <button id="unwrap">Remove the parent element of each p element</button>
+    <p>This is another paragraph.</p>
+  </body>
+
+</html>

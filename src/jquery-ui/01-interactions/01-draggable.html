@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Draggable</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <script>
+    $(function() {
+       $( "#draggable1" ).draggable({ axis: "y" }); 
+       $( "#draggable2" ).draggable({ axis: "x" }); 
+       $( "#draggable3" ).draggable({ revert: true });
+       $( "#draggable4" ).draggable({ containment: "#containment-wrapper" }); 
+       $( "#draggable5" ).draggable({ containment: "parent" });
+       $( "#draggable6" ).draggable({ snap: true });
+       $( "#draggable7" ).draggable({ snap: "#containment-wrapper" }); 
+       $( "#draggable8" ).draggable({ grid: [80, 80] });
+    });
+    </script>
+    <style>
+    .draggable { width: 100px; height: 100px; float: left; margin: 5px; font-size: 12px; }
+     #containment-wrapper { width: 325px; height: 200px; }
+    </style>
+  </head>
+
+  <body>
+    <div id="draggable1" class="draggable ui-widget-content">
+      <p>I can be dragged only vertically</p>
+    </div>
+    <div id="draggable2" class="draggable ui-widget-content">
+      <p>I can be dragged only horizontally</p>
+    </div>
+    <div id="draggable3" class="draggable ui-widget-content">
+      <p>Revert the original</p>
+    </div>
+    <br style="clear: both;" />
+    <div id="containment-wrapper" class="draggable ui-widget-content">
+      <div id="draggable4"  class="draggable ui-widget-content">
+        I'm contained within the box</div>
+      <div  class="draggable ui-widget-content">
+        <p id="draggable5" class="ui-widget-header">I'm contained within my parent</p>
+      </div>
+    </div>
+    <br style="clear: both;" />
+    <div id="draggable6" class="draggable ui-widget-content">
+      <p>Snaps to all other draggable elements</p>
+    </div>
+    <div id="draggable7" class="draggable ui-widget-content">
+      <p>I only snap to the b ig box</p>
+    </div>
+    <div id="draggable8" class="draggable ui-widget-content">
+      <p>I snap to a 80 x 80 grid</p>
+    </div>
+  </body>
+
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Class Effects</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <style>
+        .newClass { width: 400px; height: 100px; font-size: 1.6em; background: blue }
+        .anotherClass { width: 200px; height: 50px; font-size: 0.8em; background: red }
+    </style>
+    <script>
+    $(document).ready(function() {
+        $( "#addClass" ).click(function() {
+            $( "#effect" ).addClass( "newClass", 1000 );
+        });
+        $( "#removeClass" ).click(function() {
+            $( "#effect" ).removeClass( "newClass", 1000 );
+        });
+        $( "#toggleClass" ).click(function() {
+            $( "#effect" ).toggleClass( "newClass", 1000 );
+        });
+        $( "#switchClass" ).click(function() {
+            $( ".newClass" ).switchClass( "newClass", "anotherClass", 1000 );
+            $( ".anotherClass" ).switchClass( "anotherClass", "newClass", 1000 );
+        });
+    });
+    </script>
+</head>
+  <body>
+    <button id="addClass">Add Class</button>
+    <button id="removeClass">Remove Class</button>
+    <button id="toggleClass">Toggle Class</button>
+    <button id="switchClass">Switch Class</button>
+    <div id="effect" class="newClass">
+        Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede.
+    </div>
+  </body>
+</html>

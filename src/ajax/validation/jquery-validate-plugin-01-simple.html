@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery Validation Plugin - Simple</title>
+    <script src="../jquery.js"></script>
+    <script src="jquery.validate.js"></script>
+    <script>
+    $().ready(function() {
+        // validate the comment form when it is submitted
+        $("#commentForm").validate();
+    });
+    </script>
+    <style type="text/css">
+    input.valid {
+        color:blue;
+        background:url("../images/checked.gif") no-repeat right top;
+    }
+    input.error {
+        color:red;
+        background:url("../images/unchecked.gif") no-repeat right top;
+    }
+    label.error {
+        color:red;
+    }
+    </style>
+</head>
+<body>
+    <h1>jQuery Validation Plugin - Simple</h1>
+    <form id="commentForm" method="get" action="">
+    <fieldset>
+        <legend>Please provide your name, email address (won't be published) and a comment</legend>
+        <p>
+            <label for="cname">Name (required, at least 2 characters)</label>
+            <input id="cname" name="name" minlength="2" type="text" class="required" />
+        <p>
+            <label for="cemail">E-Mail (required)</label>
+            <input id="cemail" type="email" name="email" class="required" />
+        </p>
+        <p>
+            <label for="curl">URL (optional)</label>
+            <input id="curl" type="url" name="url" />
+        </p>
+        <p>
+            <label for="ccomment">Your comment (required, max 20 characters)</label>
+            <textarea id="ccomment" name="comment" maxlength="20" class="required"></textarea>
+        </p>
+        <p>
+            <label for="file2">Select any image file</label>
+            <input type="file" id="file2" name="file2" class="required" accept="image/*"/>
+        </p>
+        <p>
+            <label for="file5">Select one or more plain text files (e.g. *.txt)</label>
+            <input type="file" id="file5" name="file5" class="required" multiple accept="text/plain" />
+        </p>
+        <p>
+            <input class="submit" type="submit" value="Submit"/>
+        </p>
+    </fieldset>
+</form>
+</body>
+</html>

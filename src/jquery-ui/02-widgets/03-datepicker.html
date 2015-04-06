@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Datepicker</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <script>
+    $(function() {
+        $( "#from" ).datepicker({
+            altField: "#fromAlternate",
+            altFormat: "DD, d MM, yy",
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 2,
+            minDate: -1,
+            onSelect: function( selectedDate ) {
+                $( "#to" ).datepicker( "option", "minDate", selectedDate );
+            }
+        });
+        $( "#to" ).datepicker({
+            altField: "#toAlternate",
+            altFormat: "DD, d MM, yy",
+            changeMonth: true,
+            changeYear: true,
+            numberOfMonths: 2,
+            maxDate: +30,
+            onSelect: function( selectedDate ) {
+                $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+            }
+        });
+        $( "#anim" ).change(function() {
+            $( "#from" ).datepicker( "option", "showAnim", $( this ).val() );
+            $( "#to" ).datepicker( "option", "showAnim", $( this ).val() );
+        });
+        $( "#format" ).change(function() {
+            $( "#from" ).datepicker( "option", "dateFormat", $( this ).val() );
+            $( "#to" ).datepicker( "option", "dateFormat", $( this ).val() );
+        });
+        $( "#altFormat" ).change(function() {
+            $( "#from" ).datepicker( "option", "altFormat", $( this ).val() );
+            $( "#to" ).datepicker( "option", "altFormat", $( this ).val() );
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <p>From: <input type="text" id="from" size="30" />
+      <input type="text" id="fromAlternate" size="30" /></p>
+    <p>To: <input type="text" id="to" size="30" />
+      <input type="text" id="toAlternate" size="30" /></p>
+    <p>Animations:
+      <select id="anim">
+        <option value="show">Show (default)</option>
+        <option value="slideDown">Slide down</option>
+        <option value="fadeIn">Fade in</option>
+        <option value="blind">Blind (UI Effect)</option>
+        <option value="bounce">Bounce (UI Effect)</option>
+        <option value="clip">Clip (UI Effect)</option>
+        <option value="drop">Drop (UI Effect)</option>
+        <option value="fold">Fold (UI Effect)</option>
+        <option value="slide">Slide (UI Effect)</option>
+        <option value="">None</option>
+      </select>
+    </p>
+    <p>Format options:
+      <select id="format">
+        <option value="mm/dd/yy">Default - mm/dd/yy</option>
+        <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        <option value="d M, y">Short - d M, y</option>
+        <option value="d MM, y">Medium - d MM, y</option>
+        <option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+        <option value="'day' d 'of' MM 'in the year' yy">
+          With text - 'day' d 'of' MM 'in the year' yy</option>
+      </select>
+    </p>
+    <p>Alternate format options:
+      <select id="altFormat">
+        <option value="DD, d MM, yy">Full - DD, d MM, yy</option>
+        <option value="mm/dd/yy">Default - mm/dd/yy</option>
+        <option value="yy-mm-dd">ISO 8601 - yy-mm-dd</option>
+        <option value="d M, y">Short - d M, y</option>
+        <option value="d MM, y">Medium - d MM, y</option>
+        <option value="'day' d 'of' MM 'in the year' yy">
+          With text - 'day' d 'of' MM 'in the year' yy</option>
+      </select>
+    </p>
+  </body>
+</html>

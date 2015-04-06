@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>jQuery Mobile - Formularios</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../jquery.mobile.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery.mobile.js"></script>
+  </head>
+  <body>
+
+    <div data-role="page" id="one" data-title="Formularios">
+      <div data-role="header" data-position="fixed">
+        <h1>Formularios</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <p><a href="#login">Login</a></p>
+        <p><a href="#inputs1">Inputs I</a></p>
+        <p><a href="#inputs2">Inputs II</a></p>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="login" data-title="Login">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Login</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <form action="#" method="post" id="login-form">
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="login">login</label>
+            <input type="text" name="login" id="login" value="" placeholder="login"/>
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="password">password</label>
+            <input type="password" name="password" id="password"
+                    value="" placeholder="password"/>
+          </div>
+          <div data-role="fieldcontain">
+            <button type="submit">acceder</button>
+          </div>
+        </form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="inputs1" data-title="Inputs I">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Inputs I</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <form action="#" method="post" id="login-form">
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="a">text input</label>
+            <input type="text" name="a" id="a" value="" placeholder="text input"/>
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="b">text area</label>
+            <textarea name="b" id="b" value="" placeholder="text area"></textarea>
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="c">search input</label>
+            <input type="search" name="c" id="c" value="" />
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="t">telephone input</label>
+            <input type="tel" name="t" id="t" value="" placeholder="teléfono"/>
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="z">select</label>
+            <select name="z" id="z">
+              <option value="s">pequeño</option>
+              <option value="m">mediano</option>
+              <option value="l">grande</option>
+              <option value="xl">extremo</option>
+            </select>
+          </div>
+        </form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="inputs2" data-title="Inputs II">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Inputs II</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <form action="#" method="post" id="login-form">
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="a">slider</label>
+            <input type="range" name="a" id="a" value="15"
+                     min="0" max="100" step="5" data-highlight="true"/>
+          </div>
+          <div data-role="fieldcontain" class="ui-hide-label">
+            <label for="b">Select slider:</label>
+            <select name="b" id="b" data-role="slider">
+              <option value="off">Nole</option>
+              <option value="on">Síle</option>
+            </select> 
+          </div>
+          <div data-role="controlgroup">
+            <input type="radio" name="radio-1" id="choice-1" value="1" checked="checked" />
+            <label for="choice-1">Piedra</label>
+            <input type="radio" name="radio-1" id="choice-2" value="2"  />
+            <label for="choice-2">Papel</label>
+            <input type="radio" name="radio-1" id="choice-3" value="3"  />
+            <label for="choice-3">Tijera</label>
+          </div>
+          <div data-role="fieldcontain">
+            <input type="checkbox" name="d" id="d"/>
+            <label for="d">I agree</label>
+          </div>
+        </form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+  </body>
+</html>

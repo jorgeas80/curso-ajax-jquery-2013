@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $(window).unload(function(){
+        alert("Goodbye!");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <p>When you click <a href="http://jquery.com">this link</a>, 
+    or close the window, an alert box will be triggered.</p>
+  </body>
+
+</html>

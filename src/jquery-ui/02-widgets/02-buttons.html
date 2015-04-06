@@ -1,0 +1,73 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Button</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("input[type=submit], input[type=reset], input[type=button], a")
+            .button()
+              .click(function(event) {
+                event.preventDefault();
+              });
+        $("#toggle").button();
+        $("#checkbox").buttonset();
+        $("#radio").buttonset();
+        $("button:first").button({
+            icons: {
+                primary: "ui-icon-folder-collapsed"
+            },
+            text: false
+        }).next().button({
+            icons: {
+                primary: "ui-icon-trash"
+            }
+        }).next().button({
+            icons: {
+                secondary: "ui-icon-home"
+            }
+        }).next().button({
+            icons: {
+                primary: "ui-icon-gear",
+                secondary: "ui-icon-triangle-1-s"
+            }
+        }).next().button({
+            icons: {
+                primary: "ui-icon-locked",
+                secondary: "ui-icon-unlocked"
+            },
+            text: false
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <p class="ui-widget-header">Button, submit, reset, input, a</p>
+    <input type="submit" value="A submit button" />
+    <input type="reset" value="A reset button" />
+    <input type="button" value="A input button" />
+    <a href="#">An anchor</a>
+    <p class="ui-widget-header">CheckBox Radio</p>
+    <input type="checkbox" id="toggle" /><label for="toggle">Toggle</label>
+    <span id="checkbox">
+      <input type="checkbox" id="check1" /><label for="check1">B</label>
+      <input type="checkbox" id="check2" /><label for="check2">I</label>
+      <input type="checkbox" id="check3" /><label for="check3">U</label>
+    </span>
+    <span id="radio">
+        <input type="radio" id="radio1" name="radio" /><label for="radio1">Choice 1</label>
+        <input type="radio" id="radio2" name="radio" /><label for="radio2">Choice 2</label>
+        <input type="radio" id="radio3" name="radio" /><label for="radio3">Choice 3</label>
+    </span>
+    <p class="ui-widget-header">Icons</p>
+    <button>Button with icon only</button>
+    <button>Button with icon on the left</button>
+    <button>Button with icon on the right</button>
+    <button>Button with two icons</button>
+    <button>Button with two icons and no text</button>
+  </body>
+</html>

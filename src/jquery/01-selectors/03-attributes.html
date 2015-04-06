@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery Selectors Attributes</title>
+	<script src="../jquery.js"></script>
+	<script>
+	$(document).ready(function() {
+
+		$(".beginsWith").click(function(){
+			$("[id^=M]").toggleClass("selected");
+		});
+		$(".endsWith").click(function(){
+			$("[id$=y]").toggleClass("selected");
+		});
+		$(".contains").click(function(){
+			$("[id*=o]").toggleClass("selected");
+		});
+		$(".equals").click(function(){
+			$("[id=Goofy]").toggleClass("selected");
+		});
+		$(".notEquals").click(function(){
+			$("[id]").each(function(){
+				if ($(this).is("[id!=Goofy]")) {
+					$(this).toggleClass("selected");
+				}
+			});
+		});
+		$(".has").click(function(){
+			$("[id]").toggleClass("selected");
+		});
+		$(".notHas").click(function(){
+			$("body :not('[id]')").toggleClass("border");
+		});
+	});
+	</script>
+	<style>
+	.selected {
+		background-color: red;
+	}
+	.border {
+		border: 1px solid black;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>jQuery Selectors Attributes</h1>
+
+	<ul>
+	    <li id="Goofy">Goofy</li>
+	    <li id="Mickey">Mickey</li>
+	    <li id="Pluto">Pluto</li>
+	    <li id="Minnie">Minnie</li>
+    </ul>
+    
+    <br /><button class="beginsWith">Elements which 'id' attribute begins with 'M'</button>
+    <br /><button class="endsWith">Elements which 'id' attribute ends with 'y'</button>
+    <br /><button class="contains">Elements which 'id' attribute contains the 'o'</button>
+    <br /><button class="equals">Elements which 'id' attribute is equals to 'Goofy'</button>
+    <br /><button class="notEquals">Elements which 'id' attribute is not equals to 'Goofy'</button>
+    <br /><button class="has">Elements with an 'id' attribute</button>
+    <br /><button class="notHas">Elements with no 'id' attribute</button>
+
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Sortable</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <style>
+    .column { width: 30%; float: left; padding-bottom: 100px; }
+    .portlet { margin: 10px; }
+    .ui-sortable-placeholder { border: 1px dotted black; visibility: visible !important; }
+    </style>
+    <script>
+    $(function() {
+      $( ".column" ).sortable({
+        connectWith: ".column"
+      });
+      $( ".portlet" ).addClass( "ui-widget-content ui-corner-all" )
+        .find( ".portlet-header" )
+          .addClass( "ui-widget-header ui-corner-all" ).end()
+        .find( ".portlet-content" )
+          .text( "Lorem ipsum dolor sit amet, consectetuer adipiscing elit" );
+    });
+    </script>
+  </head>
+
+  <body>
+    <div class="column">
+      <div class="portlet">
+        <div class="portlet-header">Feeds</div>
+        <div class="portlet-content"></div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Links</div>
+        <div class="portlet-content"></div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="portlet">
+        <div class="portlet-header">Mail</div>
+        <div class="portlet-content"></div>
+      </div>
+    </div>
+    <div class="column">
+      <div class="portlet">
+        <div class="portlet-header">Images</div>
+        <div class="portlet-content"></div>
+      </div>
+      <div class="portlet">
+        <div class="portlet-header">Videos</div>
+        <div class="portlet-content"></div>
+      </div>
+    </div>
+  </body>
+
+</html>

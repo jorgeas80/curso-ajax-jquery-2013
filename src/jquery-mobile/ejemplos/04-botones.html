@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>jQuery Mobile - Botones</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../jquery.mobile.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery.mobile.js"></script>
+  </head>
+  <body>
+
+    <div data-role="page" id="one" data-title="Uno">
+      <div data-role="header" data-position="fixed">
+        <h1>Botones</h1>
+      </div><!-- /header -->
+      <div data-role="content">	
+        <p><a href="#options">Opciones</a></p>	
+        <p><a href="#icons">Iconos</a></p>	
+        <p><a href="#groups">Grupos</a></p>	
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="options" data-title="Opciones">
+      <div data-role="header" data-position="fixed">
+        <h1>Opciones</h1>
+      </div><!-- /header -->
+      <div data-role="content">	
+        <a href="#none" data-role="button" data-corners="false">No Corners</a>
+        <a href="#none" data-role="button" data-mini="true">Mini</a>
+        <a href="#none" data-role="button" data-shadow="false">No Shadow</a>
+        <a href="#none" data-role="button" data-inline="true">Inline</a>
+        ...
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <a href="#one" data-rel="back">volver</a>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="icons" data-title="Iconos">
+      <div data-role="header" data-position="fixed">
+        <h1>Iconos</h1>
+      </div><!-- /header -->
+      <div data-role="content">	
+        <a href="#none" data-role="button"
+           data-icon="check">Check</a>
+        <a href="#none" data-role="button"
+           data-icon="plus" data-iconpos="right">Plus</a>
+        <a href="#none" data-role="button"
+           data-icon="delete" data-iconpos="bottom">Delete</a>
+        <a href="#none" data-role="button"
+           data-icon="forward" data-iconpos="top">Forward</a>
+        <a href="#none" data-role="button"
+           data-icon="refresh" data-iconpos="notext" data-inline="true">Refresh</a>
+        <a href="#none" data-role="button"
+           data-icon="home" data-iconpos="notext" data-inline="true">Home</a>
+        <a href="#none" data-role="button"
+           data-icon="grid" data-iconpos="notext" data-inline="true">Grid</a>
+        <a href="#none" data-role="button"
+           data-icon="star" data-iconpos="notext" data-inline="true">Star</a>
+        <a href="#none" data-role="button"
+           data-icon="alert" data-iconpos="notext" data-inline="true"">Alert</a>
+        <a href="#none" data-role="button"
+           data-icon="arrow-d" data-iconpos="notext" data-inline="true">Arrow Down</a>
+        <a href="#none" data-role="button"
+          data-icon="arrow-u" data-iconpos="notext" data-inline="true">Arrow Up</a>
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <a href="#one" data-rel="back">volver</a>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="groups" data-title="Grupos">
+      <div data-role="header" data-position="fixed">
+        <h1>Grupos</h1>
+      </div><!-- /header -->
+      <div data-role="content">	
+        <div data-role="controlgroup">
+          <a href="#none" data-role="button">Síle</a>
+          <a href="#none" data-role="button">Nole</a>
+          <a href="#none" data-role="button">Nomacuerdo</a>
+        </div>
+        <div data-role="controlgroup" data-type="horizontal">
+          <a href="#none" data-role="button">Síle</a>
+          <a href="#none" data-role="button">Nole</a>
+          <a href="#none" data-role="button">Nosé</a>
+        </div>
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <a href="#one" data-rel="back">volver</a>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+  </body>
+</html>

@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combos dinámicos con jQuery - AJAX mejorado (estilos y caché)</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var selectModelos = $("#modelos");
+
+        var cache = {};
+
+        $("#marcas").change(function(){
+            
+            var idSelected = $("#marcas option:selected").val();
+            console.log("idSelected="+idSelected);
+
+            if ( idSelected != 0) {
+
+                if ( idSelected in cache ) {
+
+                    renderModelos(cache[idSelected], selectModelos);
+
+                } else {
+
+                    var url = "http://localhost:3000/marca/" + idSelected;
+
+                    console.log("loading");
+                    selectModelos.addClass("loading");
+
+                    $.ajax({
+                        url: url,
+                        dataType: 'json',
+                        success: function(data) {
+
+                            console.log("loaded");
+                            selectModelos.removeClass("loading");
+                            cache[idSelected] = data;
+                            renderModelos(data, selectModelos);
+                        },
+                        error: function() {
+
+                            console.log('Error loading data...');
+                            selectModelos.empty();
+                            selectModelos.append('<option value="-1">Error loading data...</option>');
+                        }
+                    });
+                }
+            
+            }
+        });
+    });
+
+    function renderModelos(modelos, selectModelos) {
+
+        selectModelos.empty();
+        selectModelos.append('<option value="0">Select...</option>');
+
+        $.each(modelos, function(index, value) {
+            console.log(value.id + '=' + value.name);
+            selectModelos.append('<option value="' + value.id + '">' + value.name + '</option>');
+        })
+    }
+    </script>
+    <style type="text/css">
+    .loading {
+        color:blue;
+        background:url("../images/loading-progreso.gif") repeat;
+    }
+    </style>
+</head>
+<body>
+    <h2>Combos dinámicos con jQuery - AJAX mejorado (estilos y caché)</h2>
+    <p>Marca: 
+        <select name="marcas" id="marcas">    
+            <option value="0">Select...</option>
+            <option value="1">Citroen</option>
+            <option value="2">Seat</option>
+            <option value="3">Peugeot</option>    s
+        </select></p>
+    <p>Modelo:
+        <select name="modelos" id="modelos">
+            <option value="0">Select...</option>
+        </select></p>
+</body>
+</html>

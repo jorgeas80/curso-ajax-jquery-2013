@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title>jQuery Mobile - Toolbars</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../jquery.mobile.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery.mobile.js"></script>
+  </head>
+  <body>
+  <body>
+
+    <div data-role="page" id="one" data-title="Toolbars">
+      <div data-role="header" data-position="fixed">
+        <h1>Toolbars</h1>
+      </div><!-- /header -->
+      <div data-role="content">
+        <p><a href="#headerbar">Header bar</a></p>
+        <p><a href="#footerbar">Footer bar</a></p>
+        <p><a href="#navbar">Nav bar</a></p>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="headerbar" data-title="Header bar">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back">Volver</a>
+        <h1>Header bar</h1>
+        <a href="#none" data-icon="forward">Seguir</a>
+      </div><!-- /header -->
+      <div data-role="content">
+        ...
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed">
+        <a href="#one" data-rel="back" data-role="button">volver</a>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="footerbar" data-title="Footer bar">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Footer bar</h1>
+        <a href="#none" data-icon="forward">Seguir</a>
+      </div><!-- /header -->
+      <div data-role="content">
+        ...
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="index.html" data-role="button" data-icon="arrow-u">Subir</a>
+        <a href="index.html" data-role="button" data-icon="arrow-d">Bajar</a>
+        <a href="index.html" data-role="button" data-icon="arrow-l">Izqda</a>
+        <a href="index.html" data-role="button" data-icon="arrow-r">Drcha</a>
+      </div><!-- /footer -->
+    </div><!-- /page -->
+
+    <div data-role="page" id="navbar" data-title="Nav bar">
+      <div data-role="header" data-position="fixed">
+        <a href="#none" data-icon="back" data-rel="back">Volver</a>
+        <h1>Nav bar</h1>
+        <a href="#none" data-icon="forward">Seguir</a>
+      </div><!-- /header -->
+      <div data-role="content">
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#none" class="ui-btn-active">enviados</a></li>
+            <li><a href="#none">recibidos</a></li>
+            <li><a href="#none">todos</a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <div data-role="navbar">
+          <ul>
+            <li><a href="#none" data-role="button"
+                    data-icon="plus" class="ui-btn-active">añadir</a></li>
+            <li><a href="#none" data-role="button"
+                    data-icon="minus">eliminar</a></li>
+            <li><a href="#none" data-role="button"
+                    data-icon="check">aceptar</a></li>
+          </ul>
+        </div><!-- /navbar -->
+        <div data-role="navbar" data-iconpos="bottom">
+          <ul>
+            <li><a href="#none" data-role="button"
+                    data-icon="plus" class="ui-btn-active">añadir</a></li>
+            <li><a href="#none" data-role="button"
+                    data-icon="minus">eliminar</a></li>
+            <li><a href="#none" data-role="button"
+                    data-icon="check">aceptar</a></li>
+          </ul>
+        </div><!-- /navbar -->
+      </div><!-- /content -->
+      <div data-role="footer" data-position="fixed" class="ui-bar">
+        <a href="index.html" data-role="button" data-icon="arrow-u">Subir</a>
+        <a href="index.html" data-role="button" data-icon="arrow-d">Bajar</a>
+        <a href="index.html" data-role="button" data-icon="arrow-l">Izqda</a>
+        <a href="index.html" data-role="button" data-icon="arrow-r">Drcha</a>
+      </div><!-- /footer -->
+  </body>
+</html>

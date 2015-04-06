@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery UI Toggle Effects</title>
+    <link rel="stylesheet" href="../jquery-ui.css" />
+    <script src="../jquery.js"></script>
+    <script src="../jquery-ui.js"></script>
+    <script>
+    $(function() {
+
+        $( "button" ).click(function() {
+
+            // get the selected effect
+            var selectedEffect = $( "#effects" ).val();
+
+            // most effect types need no options passed by default
+            var options = {};
+
+            // some effects have required parameters
+            if ( selectedEffect === "scale" ) {
+                options = { percent: 0 };
+            } else if ( selectedEffect === "size" ) {
+                options = { to: { width: 200, height: 60 } };
+            }
+
+            // get the selected action
+            var selectedAction = $( "#actions" ).val();
+
+            // run the selected action with the selected effect
+            switch(selectedAction) {
+              case "effect":
+                $( "div" ).effect( selectedEffect, options, 500 );
+                break;
+              case "show":
+                $( "div" ).show( selectedEffect, options, 500 );
+                break;
+              case "hide":
+                $( "div" ).hide( selectedEffect, options, 500 );
+                break;
+              case "toggle":
+                $( "div" ).toggle( selectedEffect, options, 500 );
+                break;
+              default:
+                alert( selectedAction + " is not correct" );
+            }
+        });
+    });
+    </script>
+  </head>
+  <body>
+    <select name="action" id="actions">
+      <option value="toggle">Toggle</option>
+      <option value="effect">Effect</option>
+      <option value="show">Show</option>
+      <option value="hide">Hide</option>
+    </select>
+    <select name="effects" id="effects">
+      <option value="blind">Blind</option>
+      <option value="bounce">Bounce</option>
+      <option value="clip">Clip</option>
+      <option value="drop">Drop</option>
+      <option value="explode">Explode</option>
+      <option value="fold">Fold</option>
+      <option value="highlight">Highlight</option>
+      <option value="puff">Puff</option>
+      <option value="pulsate">Pulsate</option>
+      <option value="scale">Scale</option>
+      <option value="shake">Shake</option>
+      <option value="size">Size</option>
+      <option value="slide">Slide</option>
+    </select>
+    <button>Execute</button>
+    <div class="ui-widget-content ui-corner-all">
+      <h3 class="ui-widget-header ui-corner-all">Toggle</h3>
+      <p>Etiam libero neque, luctus a, eleifend nec, semper at, lorem. Sed pede.
+      Nulla lorem metus, adipiscing ut, luctus sed, hendrerit vitae, mi.</p>
+    </div>
+  </body>
+</html>

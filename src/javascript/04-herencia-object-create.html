@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Herencia con Object.create</title>
+	<script>
+	var A = {
+		a: "Propiedad de A",
+		unMetodo: function() {
+			console.log("Desde A : unMetodo() : a="+this.a);
+		}
+	}
+
+	// B extends A
+	var B = Object.create(A);
+	B.b = "Propiedad de B";
+
+	/* EN ESTE CASO ESTO NO FUNCIONA
+	B.prototype.otroMetodo1 = function() 
+		console.log("Desde B : otroMetodo1() : b="+this.b);
+	};*/
+
+	B.otroMetodo2 = function() {
+		console.log("Desde B : otroMetodo2() : b="+this.b);
+	};
+	
+	// C extends B
+	var C = Object.create(B);
+	C.b = "SOBRESCRIBO propiedad b en el objeto C";
+
+	C.otroMetodo1 = function() {
+		console.log("Desde C : otroMetodo1() : b="+this.b);
+	};
+
+	C.otroMetodo2 = function() {
+		console.log("Desde C : SOBRESCRIBO otroMetodo1() : b="+this.b)
+	};
+	
+	console.log("==== A ====");
+	
+	console.log("a="+A.a); // a=Propiedad de A
+	A.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	//A.otroMetodo1(); da error
+	//A.otroMetodo2(); da error
+
+	console.log("==== B ====");
+	
+	console.log("a="+B.a); // a=Propiedad de A
+	B.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	console.log("b="+B.b); // a=Propiedad de B
+	//B.otroMetodo1(); da error
+	B.otroMetodo2();  // Propiedad de B
+	
+	console.log("==== C ====");
+
+	console.log("a="+C.a); // a=Propiedad de A
+	C.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	console.log("b="+C.b); // a=Propiedad de B
+	C.otroMetodo1(); // Propiedad de B
+	C.otroMetodo2(); // Propiedad de B
+	</script>
+</head>
+<body>
+	<h2>Herencia por Object.create</h2>
+</body>
+</html>

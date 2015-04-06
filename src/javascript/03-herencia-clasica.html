@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Herencia clásica</title>
+	<script>
+	function A() {
+		this.a = "Propiedad de A";
+		this.unMetodo = function() {
+			console.log("Desde A : unMetodo() : a="+this.a);
+		}
+	}
+
+	function B() {
+		this.b = "Propiedad de B";
+	}
+
+	// B extends A
+	B.prototype = new A();
+
+	B.prototype.otroMetodo1 = function() {
+		console.log("Desde B : otroMetodo1() : b="+this.b);
+	};
+
+	// este método no se va a añadir al protopito, así que no estará disponible
+	B.otroMetodo2 = function() {
+		console.log("Desde B : otroMetodo2() : b="+this.b);
+	};
+	
+	function C() {
+		this.b = "SOBRESCRIBO propiedad b en el objeto C";
+	};
+	
+	// C extends B
+	C.prototype = new B();
+
+	C.prototype.otroMetodo1 = function() {
+		console.log("Desde C : SOBRESCRIBO otroMetodo1() : b="+this.b);
+	};
+
+	C.prototype.otroMetodo2 = function() {
+		console.log("Desde C : otroMetodo2() : b="+this.b);
+	};
+	
+	console.log("==== A ====");
+	
+	var instanciaA = new A();
+	console.log("a="+instanciaA.a); // a=Propiedad de A
+	instanciaA.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	//instanciaA.otroMetodo1(); da error
+	//instanciaA.otroMetodo2(); da error
+
+	console.log("==== B ====");
+	
+	var instanciaB = new B();
+	console.log("a="+instanciaB.a); // a=Propiedad de A
+	instanciaB.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	console.log("b="+instanciaB.b); // a=Propiedad de B
+	instanciaB.otroMetodo1(); // Desde B : otroMetodo1() : b=Propiedad de B 
+	//instanciaB.otroMetodo2();  da error
+	
+	console.log("==== C ====");
+	
+	var instanciaC = new C();
+	console.log("a="+instanciaC.a); // a=Propiedad de A
+	instanciaC.unMetodo(); // Desde A : unMetodo() : a=Propiedad de A
+	console.log("b="+instanciaC.b); // b=SOBRESCRIBO propiedad b en el objeto C 
+	instanciaC.otroMetodo1(); // Desde C : SOBRESCRIBO otroMetodo1() : b=SOBRESCRIBO propiedad b en el objeto C
+	instanciaC.otroMetodo2(); // Desde C : otroMetodo2() : b=SOBRESCRIBO propiedad b en el objeto C
+	</script>
+</head>
+<body>
+	<h2>Herencia clásica</h2>
+</body>
+</html>

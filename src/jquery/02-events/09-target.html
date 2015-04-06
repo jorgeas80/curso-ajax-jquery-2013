@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("p, button, h1, h2").click(function(event){
+        $("div").html("Triggered by a " + event.target.nodeName + " element.");
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>This is a heading</h1>
+    <h2>This is another heading</h2>
+    <p>This is a paragraph</p>
+    <button>This is a button</button>
+    <p>The headings, paragraphs and button element has a click defined.
+    <br />If you trigger one of the events, the div below
+     will tell you which element triggered the event.</p>
+    <div />
+  </body>
+
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Elements positions with jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#getPosition").click(function(){
+        x=$("p").position();
+        alert("Left position: " + x.left + " Top position: " + x.top);
+      });
+      $("#getOffset").click(function(){
+        x=$("p").offset();
+        alert("Left offset: " + x.left + " Top offset: " + x.top);
+      });
+      $("#setOffset").click(function(){
+        $("p").offset({top:150,left:50});
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>Elements positions with jQuery</h1>
+    <div style="position: absolute; top: 100;">
+      <p>This is a paragraph.</p>
+    </div>
+    <button id="getPosition">Get the position coordinates of the p element
+     (relative to the parent)</button><br />
+    <button id="getOffset">Get the position coordinates of the p element
+      (relative to the document)</button>
+    <br />
+    <button id="setOffset">Set the position coordinates of the p element
+      (relative to the document)</button>
+  </body>
+
+</html>

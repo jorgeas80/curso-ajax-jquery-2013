@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    x=0;
+    $(document).ready(function(){
+      $(window).resize(function() {
+        $("span").text(x+=1);
+      });
+      $("button").click(function(){
+        $(window).resize();
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <p>Window resized <span>0</span> times.</p>
+    <p>Try resizing your browser window.</p>
+    <button>Activate resize event for the window</button>
+  </body>
+
+</html>

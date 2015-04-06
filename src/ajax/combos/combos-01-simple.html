@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Combos dinámicos con jQuery - Simple</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function() {
+
+        var marcas = { 
+            1: [
+                { id: "11", name: "C3" },
+                { id: "12", name: "C4" },
+                { id: "13", name: "C5" } ], 
+            2: [
+                { id: "21", name: "Ibiza" },
+                { id: "22", name: "Altea" } ,
+                { id: "23", name: "Toledo" } ], 
+            3: [
+                { id: "31", name: "208" },
+                { id: "32", name: "308" },
+                { id: "32", name: "508" } ]
+        };
+        
+        $("#marcas").change(function(){
+            
+            var selectModelos = $("#modelos").empty();
+            selectModelos.append('<option value="0">Select...</option>');
+            
+            var idSelected = $("#marcas option:selected").val();
+            console.log("idSelected="+idSelected);
+            
+            if ( idSelected != 0) {
+                var modelos = marcas[idSelected];
+                $.each(modelos, function(index, value) {
+                    console.log(value.id + '=' + value.name);
+                    selectModelos.append('<option value="' + value.id + '">' 
+                        + value.name + '</option>');
+                })
+            }
+        });
+    });
+    </script>
+</head>
+<body>
+    <h2>Combos dinámicos con jQuery - Simple</h2>
+    <p>Marca: 
+        <select name="marcas" id="marcas">    
+            <option value="0">Select...</option>
+            <option value="1">Citroen</option>
+            <option value="2">Seat</option>
+            <option value="3">Peugeot</option>    
+        </select></p>
+    <p>Modelo:
+        <select name="modelos" id="modelos">
+            <option value="0">Select...</option>
+        </select></p>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Keys events with jQuery</title>
+		<script type="text/javascript" src="../jquery.js"></script>
+		<script type="text/javascript">
+		var i=0;
+		function cambiarCss(elemento, color) {
+			$(elemento).css("background-color", color);
+		}
+		$(document).ready(function(){
+			$("input").keydown(function() {
+				cambiarCss(this, "red");
+			});
+			$("input").keyup(function() {
+				cambiarCss(this, "green");
+			});
+			$("input").keypress(function() {
+				$("span").text(i+=1);
+			});
+			$("#keydown").click(function(){
+				$("input").keydown();
+			});
+			$("#keyup").click(function(){
+				$("input").keyup();
+			});
+			$("#keypress").click(function(){
+				$("input").keypress();
+			});
+		});
+		</script>
+	</head>
+	<body>
+		<h1>Keys events with jQuery</h1>
+		<input type="text"/>
+		<p>Keypress: <span>0</span></p>
+		<br /><button id="keydown">Activate keydown event for input field</button>
+		<br /><button id="keyup">Activate keyup event for input field</button>
+		<br /><button id="keypress">Activate keypree event for input field</button>
+	</body>
+</html>

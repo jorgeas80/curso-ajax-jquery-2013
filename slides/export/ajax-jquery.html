@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc" />
+  <meta name="description" content="AJAX y jQuery" />
+  <meta name="author" content="Adolfo Sanz De Diego" />
+  <meta name="copyright" content="AJAX y jQuery - Adolfo Sanz De Diego -  Junio 2013" /> 
+  <title>AJAX y jQuery</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; background-color: #f8f8f8; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+pre, code { background-color: #f8f8f8; }
+code > span.kw { color: #204a87; font-weight: bold; }
+code > span.dt { color: #204a87; }
+code > span.dv { color: #0000cf; }
+code > span.bn { color: #0000cf; }
+code > span.fl { color: #0000cf; }
+code > span.ch { color: #4e9a06; }
+code > span.st { color: #4e9a06; }
+code > span.co { color: #8f5902; font-style: italic; }
+code > span.ot { color: #8f5902; }
+code > span.al { color: #ef2929; }
+code > span.fu { color: #000000; }
+code > span.er { font-weight: bold; }
+  </style>
+</head>
+<body>
+<header>
+<h1 class="title">AJAX y jQuery</h1>
+<h2 class="author">Adolfo Sanz De Diego</h2>
+<h3 class="date">Junio 2013</h3>
+</header>
+<nav id="TOC">
+<ul>
+<li><a href="#acerca-de"><span class="toc-section-number">1</span> Acerca de</a><ul>
+<li><a href="#autor"><span class="toc-section-number">1.1</span> Autor</a></li>
+<li><a href="#licencia"><span class="toc-section-number">1.2</span> Licencia</a></li>
+</ul></li>
+<li><a href="#javascript"><span class="toc-section-number">2</span> JavaScript</a><ul>
+<li><a href="#historia"><span class="toc-section-number">2.1</span> Historia</a></li>
+<li><a href="#el-lenguaje"><span class="toc-section-number">2.2</span> El lenguaje</a></li>
+</ul></li>
+<li><a href="#arrays"><span class="toc-section-number">3</span> Arrays</a><ul>
+<li><a href="#qué-son"><span class="toc-section-number">3.1</span> ¿Qué son?</a></li>
+<li><a href="#propiedad-y-métodos"><span class="toc-section-number">3.2</span> Propiedad y métodos</a></li>
+</ul></li>
+<li><a href="#objects"><span class="toc-section-number">4</span> Objects</a><ul>
+<li><a href="#qué-son-1"><span class="toc-section-number">4.1</span> ¿Qué son?</a></li>
+<li><a href="#propiedades"><span class="toc-section-number">4.2</span> Propiedades</a></li>
+<li><a href="#tipos"><span class="toc-section-number">4.3</span> Tipos</a></li>
+</ul></li>
+<li><a href="#funciones"><span class="toc-section-number">5</span> Funciones</a><ul>
+<li><a href="#qué-son-2"><span class="toc-section-number">5.1</span> ¿Qué son?</a></li>
+<li><a href="#this"><span class="toc-section-number">5.2</span> This</a></li>
+<li><a href="#arguments"><span class="toc-section-number">5.3</span> Arguments</a></li>
+<li><a href="#constructores-y-prototipos"><span class="toc-section-number">5.4</span> Constructores y Prototipos</a></li>
+</ul></li>
+<li><a href="#herencia"><span class="toc-section-number">6</span> Herencia</a><ul>
+<li><a href="#introducción"><span class="toc-section-number">6.1</span> Introducción</a></li>
+<li><a href="#clásica"><span class="toc-section-number">6.2</span> Clásica</a></li>
+<li><a href="#prototipos"><span class="toc-section-number">6.3</span> Prototipos</a></li>
+<li><a href="#funcional"><span class="toc-section-number">6.4</span> Funcional</a></li>
+</ul></li>
+<li><a href="#dom"><span class="toc-section-number">7</span> DOM</a><ul>
+<li><a href="#qué-es-dom"><span class="toc-section-number">7.1</span> ¿Qué es DOM?</a></li>
+<li><a href="#tipos-de-nodos"><span class="toc-section-number">7.2</span> Tipos de nodos</a></li>
+<li><a href="#selección"><span class="toc-section-number">7.3</span> Selección</a></li>
+<li><a href="#manipulación"><span class="toc-section-number">7.4</span> Manipulación</a></li>
+</ul></li>
+<li><a href="#json"><span class="toc-section-number">8</span> JSON</a><ul>
+<li><a href="#qué-es-json"><span class="toc-section-number">8.1</span> ¿Qué es JSON?</a></li>
+<li><a href="#parse"><span class="toc-section-number">8.2</span> Parse</a></li>
+<li><a href="#ejemplo"><span class="toc-section-number">8.3</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#ajax"><span class="toc-section-number">9</span> AJAX</a><ul>
+<li><a href="#qué-es-ajax"><span class="toc-section-number">9.1</span> ¿Qué es AJAX?</a></li>
+<li><a href="#tecnologías-ajax"><span class="toc-section-number">9.2</span> Tecnologías AJAX</a></li>
+<li><a href="#qué-es-el-xmlhttprequest"><span class="toc-section-number">9.3</span> ¿Qué es el XMLHttpRequest?</a></li>
+<li><a href="#ejemplo-1"><span class="toc-section-number">9.4</span> Ejemplo</a></li>
+</ul></li>
+<li><a href="#rest"><span class="toc-section-number">10</span> REST</a><ul>
+<li><a href="#qué-es-rest"><span class="toc-section-number">10.1</span> ¿Qué es REST?</a></li>
+<li><a href="#por-qué-rest"><span class="toc-section-number">10.2</span> ¿Por qué REST?</a></li>
+<li><a href="#ejemplo-api"><span class="toc-section-number">10.3</span> Ejemplo API</a></li>
+<li><a href="#manejo-de-errores"><span class="toc-section-number">10.4</span> Manejo de errores</a></li>
+</ul></li>
+<li><a href="#jquery"><span class="toc-section-number">11</span> jQuery</a><ul>
+<li><a href="#qué-es-jquery"><span class="toc-section-number">11.1</span> ¿Qué es jQuery?</a></li>
+<li><a href="#selectores"><span class="toc-section-number">11.2</span> Selectores</a></li>
+<li><a href="#eventos"><span class="toc-section-number">11.3</span> Eventos</a></li>
+<li><a href="#css"><span class="toc-section-number">11.4</span> CSS</a></li>
+<li><a href="#efectos"><span class="toc-section-number">11.5</span> Efectos</a></li>
+<li><a href="#html"><span class="toc-section-number">11.6</span> HTML</a></li>
+<li><a href="#plugins"><span class="toc-section-number">11.7</span> Plugins</a></li>
+<li><a href="#ajax-1"><span class="toc-section-number">11.8</span> AJAX</a></li>
+</ul></li>
+<li><a href="#jquery-ui"><span class="toc-section-number">12</span> jQuery UI</a><ul>
+<li><a href="#qué-es-jquery-ui"><span class="toc-section-number">12.1</span> ¿Qué es jQuery UI?</a></li>
+<li><a href="#componentes"><span class="toc-section-number">12.2</span> Componentes</a></li>
+</ul></li>
+<li><a href="#jquery-mobile"><span class="toc-section-number">13</span> jQuery Mobile</a><ul>
+<li><a href="#qué-es-jquery-mobile"><span class="toc-section-number">13.1</span> ¿Qué es jQuery Mobile?</a></li>
+<li><a href="#ejemplos"><span class="toc-section-number">13.2</span> Ejemplos</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="acerca-de"><a href="#acerca-de"><span class="header-section-number">1</span> Acerca de</a></h1>
+<h2 id="autor"><a href="#autor"><span class="header-section-number">1.1</span> Autor</a></h2>
+<ul>
+<li><strong>Adolfo Sanz De Diego</strong>
+<ul>
+<li>Correo: <a href="mailto:asanzdiego@gmail.com">asanzdiego@gmail.com</a></li>
+<li>Twitter: <a href="http://twitter.com/asanzdiego">@asanzdiego</a></li>
+<li>Linkedin: <a href="http://www.linkedin.com/in/asanzdiego">http://www.linkedin.com/in/asanzdiego</a></li>
+<li>Blog: <a href="http://asanzdiego.blogspot.com.es">http://asanzdiego.blogspot.com.es</a></li>
+</ul></li>
+</ul>
+<h2 id="licencia"><a href="#licencia"><span class="header-section-number">1.2</span> Licencia</a></h2>
+<ul>
+<li><strong>Este obra está bajo una licencia:</strong>
+<ul>
+<li><a href="http://creativecommons.org/licenses/by-sa/3.0/es/">Creative Commons Reconocimiento-CompartirIgual 3.0</a></li>
+</ul></li>
+<li><strong>El código fuente de los programas están bajo una licencia:</strong>
+<ul>
+<li><a href="http://www.viti.es/gnu/licenses/gpl.html">GPL 3.0</a></li>
+</ul></li>
+</ul>
+<h1 id="javascript"><a href="#javascript"><span class="header-section-number">2</span> JavaScript</a></h1>
+<h2 id="historia"><a href="#historia"><span class="header-section-number">2.1</span> Historia</a></h2>
+<ul>
+<li>Lo crea <strong>Brendan Eich en Netscape en 1995</strong> para hacer páginas web dinámicas</li>
+<li>Aparece por primera vez en Netscape Navigator 2.0</li>
+<li>Cada día más usado (clientes web, videojuegos, windows 8, servidores web, etc.)</li>
+</ul>
+<h2 id="el-lenguaje"><a href="#el-lenguaje"><span class="header-section-number">2.2</span> El lenguaje</a></h2>
+<ul>
+<li>Orientado a objetos</li>
+<li>Basado en prototipos</li>
+<li>Funcional</li>
+<li>Débilmente tipado</li>
+<li>Dinámico</li>
+</ul>
+<h1 id="arrays"><a href="#arrays"><span class="header-section-number">3</span> Arrays</a></h1>
+<h2 id="qué-son"><a href="#qué-son"><span class="header-section-number">3.1</span> ¿Qué son?</a></h2>
+<ul>
+<li>Lista de valores (de cualquier tipo) separados por comas.</li>
+</ul>
+<pre><code>a = [1, 2, 3, 4]</code></pre>
+<h2 id="propiedad-y-métodos"><a href="#propiedad-y-métodos"><span class="header-section-number">3.2</span> Propiedad y métodos</a></h2>
+<ul>
+<li>Propiedad <strong>length</strong>: longitud del array.</li>
+<li>Método <strong>push</strong>: añadir un elemento al final del array</li>
+<li>Método <strong>pop</strong>: sacar el último elemento del array</li>
+<li>Método <strong>unshift</strong>: añadir un elemento al principio del array</li>
+<li>Método <strong>shift</strong>: sacar el primer elemento del array</li>
+</ul>
+<h1 id="objects"><a href="#objects"><span class="header-section-number">4</span> Objects</a></h1>
+<h2 id="qué-son-1"><a href="#qué-son-1"><span class="header-section-number">4.1</span> ¿Qué son?</a></h2>
+<ul>
+<li><p>Colección de propiedades separados por comas.</p></li>
+<li><p>Una propiedad tiene un nombre y un valor separados por dos puntos.</p></li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto = {
+  <span class="dt">nombre</span>: <span class="st">&quot;Adolfo&quot;</span>,
+  <span class="dt">edad</span>: <span class="st">&quot;35&quot;</span>
+};</code></pre>
+<h2 id="propiedades"><a href="#propiedades"><span class="header-section-number">4.2</span> Propiedades</a></h2>
+<ul>
+<li>Podemos acceder directamente o como si fuese un contenedor:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">objeto</span>.<span class="fu">nombre</span> === objeto[nombre] <span class="co">// true</span></code></pre>
+<ul>
+<li>Podemos crearlas y destruirlas en tiempo de ejecución</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> objeto = {};
+<span class="ot">objeto</span>.<span class="fu">nuevaPropiedad</span> = <span class="dv">1</span>; <span class="co">// añadir</span>
+<span class="kw">delete</span> <span class="ot">objeto</span>.<span class="fu">nuevaPropiedad</span>; <span class="co">// eliminar</span></code></pre>
+<h2 id="tipos"><a href="#tipos"><span class="header-section-number">4.3</span> Tipos</a></h2>
+<ul>
+<li><p>Todo son objetos excepto: strings, números, booleans, null o undefined</p></li>
+<li><p>Strings, números y booleans se comportan como objetos inmutables</p></li>
+</ul>
+<h1 id="funciones"><a href="#funciones"><span class="header-section-number">5</span> Funciones</a></h1>
+<h2 id="qué-son-2"><a href="#qué-son-2"><span class="header-section-number">5.1</span> ¿Qué son?</a></h2>
+<ul>
+<li><p>Son objetos con sus propiedades.</p></li>
+<li><p>Se pueden pasar como parámetros a otras funciones.</p></li>
+<li><p>Pueden guardarse en variables.</p></li>
+<li><p>Son mensajes cuyo receptor es <strong>this</strong></p></li>
+</ul>
+<h2 id="this"><a href="#this"><span class="header-section-number">5.2</span> This</a></h2>
+<ul>
+<li>Dos funciones permiten manipular el this: <strong>call y apply</strong> que en lo único que se diferencian es en la llamada.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">fn</span>.<span class="fu">call</span>(thisArg [, arg1 [, arg2 [...]]])</code></pre>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="ot">fn</span>.<span class="fu">apply</span>(thisArg [, arglist])</code></pre>
+<h2 id="arguments"><a href="#arguments"><span class="header-section-number">5.3</span> Arguments</a></h2>
+<ul>
+<li>Es un objeto que contiene los parámetros de la función.</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">echoArgs</span>() {
+    <span class="fu">alert</span>(arguments[<span class="dv">0</span>]); <span class="co">// 1</span>
+}
+<span class="fu">echoArgs</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>);</code></pre>
+<h2 id="constructores-y-prototipos"><a href="#constructores-y-prototipos"><span class="header-section-number">5.4</span> Constructores y Prototipos</a></h2>
+<ul>
+<li><p>Los constructores son funciones precedidas con <strong>new</strong> cuyo contexto es el objeto generado.</p></li>
+<li><p>Sólo se puede modificar el prototipo de objetos creados con un constructor.</p></li>
+<li><p>Modificar un prototipo afecta a todas las instancias anteriores (y futuras).</p></li>
+</ul>
+<h1 id="herencia"><a href="#herencia"><span class="header-section-number">6</span> Herencia</a></h1>
+<h2 id="introducción"><a href="#introducción"><span class="header-section-number">6.1</span> Introducción</a></h2>
+<ul>
+<li><p>En JavaScript no existen las clases tal cual las conocemos en otros lenguajes.</p></li>
+<li>La aproximación <strong>clásica</strong>:
+<ul>
+<li>Está más extendida.</li>
+<li>Y es más fácil de entender.</li>
+</ul></li>
+<li>La aproximación por <strong>prototipos</strong>:
+<ul>
+<li>Es más &quot;natural&quot; al lenguaje.</li>
+<li>Y es más eficiente en el uso de memoria.</li>
+</ul></li>
+<li>La aproximación <strong>funcional</strong>:
+<ul>
+<li>Encapsulado público/privado.</li>
+</ul></li>
+</ul>
+<h2 id="clásica"><a href="#clásica"><span class="header-section-number">6.2</span> Clásica</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">A</span>() {
+    <span class="kw">this</span>.<span class="fu">a</span> = <span class="st">&quot;Propiedad de A&quot;</span>;
+    <span class="kw">this</span>.<span class="fu">unMetodo</span> = <span class="kw">function</span>() {
+        <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">a</span>);
+    }
+}
+
+<span class="kw">function</span> <span class="fu">B</span>() {
+    <span class="kw">this</span>.<span class="fu">b</span> = <span class="st">&quot;Propiedad de B&quot;</span>;
+}
+
+<span class="co">// B extends A</span>
+<span class="ot">B</span>.<span class="fu">prototype</span> = <span class="kw">new</span> <span class="fu">A</span>();
+
+<span class="ot">B</span>.<span class="ot">prototype</span>.<span class="fu">otroMetodo</span> = <span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">b</span>);
+};
+
+<span class="kw">var</span> instancia = <span class="kw">new</span> <span class="fu">B</span>();
+<span class="ot">instancia</span>.<span class="fu">unMetodo</span>();
+<span class="ot">instancia</span>.<span class="fu">otroMetodo</span>();</code></pre>
+<h2 id="prototipos"><a href="#prototipos"><span class="header-section-number">6.3</span> Prototipos</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> A = {
+    <span class="dt">a</span>: <span class="st">&quot;Propiedad de A&quot;</span>,
+    <span class="dt">unMetodo</span>: <span class="kw">function</span>() {
+        <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">a</span>);
+    }
+}
+
+<span class="co">// B extends A</span>
+<span class="kw">var</span> B = <span class="ot">Object</span>.<span class="fu">create</span>(A);
+<span class="ot">B</span>.<span class="fu">b</span> = <span class="st">&quot;Propiedad de B&quot;</span>;
+
+<span class="ot">B</span>.<span class="fu">otroMetodo</span> = <span class="kw">function</span>() {
+    <span class="ot">console</span>.<span class="fu">log</span>(<span class="kw">this</span>.<span class="fu">b</span>);
+};
+
+<span class="ot">B</span>.<span class="fu">unMetodo</span>();
+<span class="ot">B</span>.<span class="fu">otroMetodo</span>();</code></pre>
+<h2 id="funcional"><a href="#funcional"><span class="header-section-number">6.4</span> Funcional</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">function</span> <span class="fu">A</span>() {
+    <span class="kw">var</span> a = <span class="st">&quot;Propiedad Privada de A&quot;</span>;
+    <span class="kw">var</span> metodoPrivado = <span class="kw">function</span>(s) {
+        <span class="kw">return</span> <span class="ot">s</span>.<span class="fu">toUpperCase</span>();
+    };
+    <span class="kw">var</span> self = {};
+    <span class="ot">self</span>.<span class="fu">metodoPublico</span> = <span class="kw">function</span>() {
+        <span class="kw">return</span> <span class="st">&quot;a=&quot;</span>+<span class="fu">metodoPrivado</span>(a);
+    };
+    <span class="kw">return</span> self;
+}
+
+<span class="kw">function</span> <span class="fu">B</span>() {
+    <span class="co">// B extends A</span>
+    <span class="kw">var</span> self = <span class="fu">A</span>();
+    <span class="ot">self</span>.<span class="fu">b</span> = <span class="st">&quot;Propiedad Pública de B&quot;</span>;
+    <span class="kw">return</span> self;
+}
+
+<span class="kw">var</span> instancia = <span class="kw">new</span> <span class="fu">B</span>();
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="ot">instancia</span>.<span class="fu">metodoPublico</span>());
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;a=&quot;</span>+<span class="ot">instancia</span>.<span class="fu">a</span>);
+<span class="ot">console</span>.<span class="fu">log</span>(<span class="st">&quot;b=&quot;</span>+<span class="ot">instancia</span>.<span class="fu">b</span>);</code></pre>
+<h1 id="dom"><a href="#dom"><span class="header-section-number">7</span> DOM</a></h1>
+<h2 id="qué-es-dom"><a href="#qué-es-dom"><span class="header-section-number">7.1</span> ¿Qué es DOM?</a></h2>
+<ul>
+<li>Acrónimo de <strong>Document Object Model</strong></li>
+<li>Es un conjunto de utilidades específicamente diseñadas para <strong>manipular documentos XML, y por extensión documentos XHTML y HTML</strong>.</li>
+<li>DOM transforma internamente el archivo XML en una estructura más fácil de manejar formada por una jerarquía de nodos.</li>
+</ul>
+<h2 id="tipos-de-nodos"><a href="#tipos-de-nodos"><span class="header-section-number">7.2</span> Tipos de nodos</a></h2>
+<ul>
+<li>Los más importantes son:
+<ul>
+<li><strong>Document</strong>: representa el nodo raíz.</li>
+<li><strong>Element</strong>: representa el contenido definido por un par de etiquetas de apertura y cierre y puede tener tanto nodos hijos como atributos.</li>
+<li><strong>Attr</strong>: representa el atrributo de un elemento.</li>
+<li><strong>Text</strong>: almacena el contenido del texto que se encuentra entre una etiqueta de apertura y una de cierre.</li>
+</ul></li>
+</ul>
+<h2 id="selección"><a href="#selección"><span class="header-section-number">7.3</span> Selección</a></h2>
+<ul>
+<li>JavaScript proporciona funciones para la sección de nodos:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> parrafos = <span class="ot">document</span>.<span class="fu">getElementsByTagName</span>(<span class="st">&quot;p&quot;</span>);
+<span class="kw">var</span> parrafo0 = parrafos[<span class="dv">0</span>];
+<span class="kw">var</span> nodoSeleccionadoPorId = <span class="ot">parrafo0</span>.<span class="fu">getElementsById</span>(<span class="st">&quot;Id&quot;</span>);</code></pre>
+<ul>
+<li>Pero como veremos adelante, es mucho más cómodo utilizar <strong>jQuery</strong>.</li>
+</ul>
+<h2 id="manipulación"><a href="#manipulación"><span class="header-section-number">7.4</span> Manipulación</a></h2>
+<ul>
+<li>JavaScript proporciona funciones para la manipulación de nodos:</li>
+</ul>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> nuevoP = <span class="ot">document</span>.<span class="fu">createElement</span>(<span class="st">&quot;p&quot;</span>);
+<span class="kw">var</span> texto = <span class="ot">document</span>.<span class="fu">createTextNode</span>(<span class="st">&quot;Este parrafo se ha creado dinámicamente y sustituye al parrafo original&quot;</span>);
+<span class="ot">nuevoP</span>.<span class="fu">appendChild</span>(texto);
+
+<span class="kw">var</span> anteriorP = <span class="ot">document</span>.<span class="ot">body</span>.<span class="fu">getElementsByTagName</span>(<span class="st">&quot;p&quot;</span>)[<span class="dv">0</span>];
+<span class="ot">anteriorP</span>.<span class="ot">parentNode</span>.<span class="fu">replaceChild</span>(nuevoP, anteriorP);</code></pre>
+<ul>
+<li>Pero como veremos adelante, es mucho más cómodo utilizar <strong>jQuery</strong>.</li>
+</ul>
+<h1 id="json"><a href="#json"><span class="header-section-number">8</span> JSON</a></h1>
+<h2 id="qué-es-json"><a href="#qué-es-json"><span class="header-section-number">8.1</span> ¿Qué es JSON?</a></h2>
+<ul>
+<li>Acrónimo de <strong>JavaScript Object Notation</strong>.</li>
+<li>Es un subconjunto de la notación literal de objetos de JavaScript.</li>
+<li>Sirve como formato ligero para el intercambio de datos.</li>
+<li><strong>Su simplicidad ha generalizado su uso, especialmente como alternativa a XML en AJAX</strong>.</li>
+<li>En JavaScript, un texto JSON se puede analizar fácilmente usando la <strong>función eval()</strong>.</li>
+</ul>
+<h2 id="parse"><a href="#parse"><span class="header-section-number">8.2</span> Parse</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">miObjeto = <span class="fu">eval</span>(<span class="st">&#39;(&#39;</span> + json_datos + <span class="st">&#39;)&#39;</span>);</code></pre>
+<ul>
+<li><p>Eval es muy rápido, pero como compila y ejecuta cualquier código JavaScript, las consideraciones de seguridad recomiendan no usarlo.</p></li>
+<li>Lo recomendable usar las librerías de <a href="http://www.json.org/">JSON.org</a>:
+<ul>
+<li><a href="http://www.json.org/js.html">JSON in JavaScript - Explanation</a></li>
+<li><a href="https://github.com/douglascrockford/JSON-js">JSON in JavaScript - Downloads</a></li>
+</ul></li>
+</ul>
+<h2 id="ejemplo"><a href="#ejemplo"><span class="header-section-number">8.3</span> Ejemplo</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript">{
+    <span class="dt">curso</span>: <span class="st">&quot;AJAX y jQuery&quot;</span>,
+    <span class="dt">profesor</span>: <span class="st">&quot;Adolfo&quot;</span>,
+    <span class="dt">participantes</span>: [
+        { <span class="dt">nombre</span>: <span class="st">&quot;Isabel&quot;</span>, <span class="dt">edad</span>: <span class="dv">35</span> },
+        { <span class="dt">nombre</span>: <span class="st">&quot;Alba&quot;</span>, <span class="dt">edad</span>: <span class="dv">15</span> },
+        { <span class="dt">nombre</span>: <span class="st">&quot;Laura&quot;</span>, <span class="dt">edad</span>: <span class="dv">10</span> }
+    ]
+}</code></pre>
+<h1 id="ajax"><a href="#ajax"><span class="header-section-number">9</span> AJAX</a></h1>
+<h2 id="qué-es-ajax"><a href="#qué-es-ajax"><span class="header-section-number">9.1</span> ¿Qué es AJAX?</a></h2>
+<ul>
+<li>Acrónimo de <strong>Asynchronous JavaScript And XML</strong>.</li>
+<li>Técnica para crear <strong>aplicaciones web interactivas</strong> o RIA (Rich Internet Applications).</li>
+<li>Estas aplicaciones se ejecutan en el cliente, es decir, en el navegador de los usuarios.</li>
+<li>Mientras se mantiene la comunicación asíncrona con el servidor en segundo plano.</li>
+<li>De esta forma es posible realizar <strong>cambios sobre las páginas sin necesidad de recargarlas</strong>.</li>
+</ul>
+<h2 id="tecnologías-ajax"><a href="#tecnologías-ajax"><span class="header-section-number">9.2</span> Tecnologías AJAX</a></h2>
+<ul>
+<li><p>AJAX no es una tecnología en sí misma, en realidad, se trata de varias tecnologías independientes que se unen de formas nuevas y sorprendentes.</p></li>
+<li>Las tecnologías que forman AJAX son:
+<ul>
+<li><strong>XHTML y CSS</strong>, como estándares de presentación.</li>
+<li><strong>DOM</strong>, para la manipulación dinámica de la presentación.</li>
+<li><strong>XML, JSON y otros</strong>, para la la manipulación de información.</li>
+<li><strong>XMLHttpRequest</strong>, para el intercambio asíncrono de información.</li>
+<li><strong>JavaScript</strong>, para unir todas las demás tecnologías.</li>
+</ul></li>
+</ul>
+<h2 id="qué-es-el-xmlhttprequest"><a href="#qué-es-el-xmlhttprequest"><span class="header-section-number">9.3</span> ¿Qué es el XMLHttpRequest?</a></h2>
+<ul>
+<li>El intercambio de datos AJAX entre cliente y servidor se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuales.</li>
+<li><strong>No es necesario que el contenido esté formateado en XML</strong>.</li>
+<li>Su manejo puede llegar a ser complejo, aunque librerías como <strong>jQuery</strong> facilitan enormemente su uso.</li>
+</ul>
+<h2 id="ejemplo-1"><a href="#ejemplo-1"><span class="header-section-number">9.4</span> Ejemplo</a></h2>
+<pre class="sourceCode javascript"><code class="sourceCode javascript"><span class="kw">var</span> http_request = <span class="kw">new</span> <span class="fu">XMLHttpRequest</span>();
+<span class="kw">var</span> url = <span class="st">&quot;http://example.net/jsondata.php&quot;</span>; <span class="co">// Esta URL debería devolver datos JSON</span>
+ 
+<span class="co">// Descarga los datos JSON del servidor.</span>
+<span class="ot">http_request</span>.<span class="fu">onreadystatechange</span> = handle_json;
+<span class="ot">http_request</span>.<span class="fu">open</span>(<span class="st">&quot;GET&quot;</span>, url, <span class="kw">true</span>);
+<span class="ot">http_request</span>.<span class="fu">send</span>(<span class="kw">null</span>);
+ 
+<span class="kw">function</span> <span class="fu">handle_json</span>() {
+  <span class="kw">if</span> (<span class="ot">http_request</span>.<span class="fu">readyState</span> == <span class="dv">4</span>) {
+    <span class="kw">if</span> (<span class="ot">http_request</span>.<span class="fu">status</span> == <span class="dv">200</span>) {
+      <span class="kw">var</span> json_data = <span class="ot">http_request</span>.<span class="fu">responseText</span>; 
+      <span class="kw">var</span> the_object = <span class="fu">eval</span>(<span class="st">&quot;(&quot;</span> + json_data + <span class="st">&quot;)&quot;</span>);
+    } <span class="kw">else</span> {
+      <span class="fu">alert</span>(<span class="st">&quot;Ocurrio un problema con la URL.&quot;</span>);
+    }
+    http_request = <span class="kw">null</span>;
+  }
+}</code></pre>
+<h1 id="rest"><a href="#rest"><span class="header-section-number">10</span> REST</a></h1>
+<h2 id="qué-es-rest"><a href="#qué-es-rest"><span class="header-section-number">10.1</span> ¿Qué es REST?</a></h2>
+<ul>
+<li><p>REST (Representational State Transfer) es una técnica de arquitectura software para sistemas hipermedia distribuidos como la World Wide Web.</p></li>
+<li><p>Es decir, <strong>una URL (Uniform Resource Locator) representa un recurso al que se puede acceder o modificar mediante los métodos del protocolo HTTP (POST, GET, PUT, DELETE)</strong>.</p></li>
+<li><p>Ver <a href="https://eamodeorubio.wordpress.com/category/webservices/rest/">Artículos de REST de Enrique Amodeo Rubio (@eamodeorubio)</a></p></li>
+</ul>
+<h2 id="por-qué-rest"><a href="#por-qué-rest"><span class="header-section-number">10.2</span> ¿Por qué REST?</a></h2>
+<ul>
+<li>Es <strong>más sencillo</strong> (tanto la API como la implementación).</li>
+<li>Es <strong>más rápido</strong> (peticiones más lijeras que se puede cachear).</li>
+<li>Es <strong>multiformato</strong> (HTML, XML, JSON, etc.).</li>
+<li>Se complementa muy bien con <strong>AJAX</strong>.</li>
+</ul>
+<h2 id="ejemplo-api"><a href="#ejemplo-api"><span class="header-section-number">10.3</span> Ejemplo API</a></h2>
+<ul>
+<li><strong>GET</strong> a <em>http://myhost.com/person</em>
+<ul>
+<li>Devuelve todas las personas</li>
+</ul></li>
+<li><strong>POST</strong> a <em>http://myhost.com/person</em>
+<ul>
+<li>Crear una nueva persona</li>
+</ul></li>
+<li><strong>GET</strong> a <em>http://myhost.com/person/123</em>
+<ul>
+<li>Devuelve la persona con id=123</li>
+</ul></li>
+<li><strong>PUT</strong> a <em>http://myhost.com/person/123</em>
+<ul>
+<li>Actualiza la persona con id=123</li>
+</ul></li>
+<li><strong>DELETE</strong> a <em>http://myhost.com/person/123</em>
+<ul>
+<li>Borra la persona con id=123</li>
+</ul></li>
+</ul>
+<h2 id="manejo-de-errores"><a href="#manejo-de-errores"><span class="header-section-number">10.4</span> Manejo de errores</a></h2>
+<ul>
+<li><p><strong>Se pueden utilizar los errores del protocolo HTTP</strong>:</p>
+<ul>
+<li>200 OK Standard response for successful HTTP requests</li>
+<li>201 Created</li>
+<li>202 Accepted</li>
+<li>301 Moved Permanently</li>
+<li>400 Bad Request</li>
+<li>401 Unauthorised</li>
+<li>402 Payment Required</li>
+<li>403 Forbidden</li>
+<li>404 Not Found</li>
+<li>405 Method Not Allowed</li>
+<li>500 Internal Server Error</li>
+<li>501 Not Implemented</li>
+</ul></li>
+</ul>
+<h1 id="jquery"><a href="#jquery"><span class="header-section-number">11</span> jQuery</a></h1>
+<h2 id="qué-es-jquery"><a href="#qué-es-jquery"><span class="header-section-number">11.1</span> ¿Qué es jQuery?</a></h2>
+<ul>
+<li><p>Es una librería JavaScript que <strong>simplifica el manejo del DOM</strong> del HTML cliente.</p></li>
+<li><p>También <strong>simplifica el manejo de peticiones AJAX</strong> con el servidor.</p></li>
+<li><p>Funciona seleccionando uno o varios elementos y ejecutando una acción sobre ellos.</p></li>
+<li><p>&quot;<strong>Write less, do more.</strong>&quot;</p></li>
+<li><p>La mejor API que he visto <a href="http://oscarotero.com/jquery/">jQuery Quick API Reference</a></p></li>
+</ul>
+<h2 id="selectores"><a href="#selectores"><span class="header-section-number">11.2</span> Selectores</a></h2>
+<ul>
+<li>Utiliza <strong>los mismos que CSS</strong>, y alguno más propio.</li>
+</ul>
+<h2 id="eventos"><a href="#eventos"><span class="header-section-number">11.3</span> Eventos</a></h2>
+<ul>
+<li><p>jQuery está pensado para <strong>recoger y/o lanzar</strong> eventos.</p></li>
+<li><p>Estos eventos normalmente son <strong>eventos de ratón, de teclado</strong>.</p></li>
+<li><p>También maneja los <strong>eventos de cambio de estado</strong> de algún elemento del DOM.</p></li>
+</ul>
+<h2 id="css"><a href="#css"><span class="header-section-number">11.4</span> CSS</a></h2>
+<ul>
+<li>Podemos cambiar tanto el <strong>atributo style</strong>, como las <strong>clases</strong> de un elemento.</li>
+</ul>
+<h2 id="efectos"><a href="#efectos"><span class="header-section-number">11.5</span> Efectos</a></h2>
+<ul>
+<li><p><strong>Ocultar, mostrar, desvanecer</strong> elementos.</p></li>
+<li><p>También podemos hacer <strong>animaciones</strong> cambiando el CSS.</p></li>
+<li><p>Ver también <a href="http://ricostacruz.com/jquery.transit/">CSS3 transitions jQuery plugin</a></p></li>
+</ul>
+<h2 id="html"><a href="#html"><span class="header-section-number">11.6</span> HTML</a></h2>
+<ul>
+<li>Podemos <strong>cambiar el DOM</strong> del HTML:
+<ul>
+<li>añadiendo texto tanto al principio como al final de un elemento,</li>
+<li>cambiando el texto de un elemento,</li>
+<li>añadiendo un elemento tanto antes como después de un elemento,</li>
+<li>eliminando elementos.</li>
+</ul></li>
+</ul>
+<h2 id="plugins"><a href="#plugins"><span class="header-section-number">11.7</span> Plugins</a></h2>
+<ul>
+<li><p>Existe un <strong>gran catálogo</strong> de plugins.</p></li>
+<li><p>Los plugins <strong>se crean de una forma muy sencilla</strong>.</p></li>
+<li><p>Ver <a href="http://docs.jquery.com/Tutorials:Getting_Started_with_jQuery">Tutorial Oficial</a></p></li>
+</ul>
+<h2 id="ajax-1"><a href="#ajax-1"><span class="header-section-number">11.8</span> AJAX</a></h2>
+<ul>
+<li><strong>Simplifica las peticiones AJAX</strong>, pudiendo manejar su estado.</li>
+</ul>
+<h1 id="jquery-ui"><a href="#jquery-ui"><span class="header-section-number">12</span> jQuery UI</a></h1>
+<h2 id="qué-es-jquery-ui"><a href="#qué-es-jquery-ui"><span class="header-section-number">12.1</span> ¿Qué es jQuery UI?</a></h2>
+<ul>
+<li><p>Son un conjunto de <strong>componentes visuales</strong>, con <a href="http://jqueryui.com/themeroller/">temas personalizables</a>.</p></li>
+<li><p>Las clases CSS se pueden reutilizar. Ver <a href="http://docs.jquery.com/UI/Theming/API">The jQuery UI CSS Framework</a></p></li>
+<li><p>Las demos están muy bien, con muchos y muy buenos ejemplos <a href="http://jqueryui.com/demos/">jQuery UI Demos</a></p></li>
+</ul>
+<h2 id="componentes"><a href="#componentes"><span class="header-section-number">12.2</span> Componentes</a></h2>
+<ul>
+<li><strong>Interactions</strong>: draggable, droppable, resizable, selectable, sortable</li>
+<li><strong>Widgets</strong>: accordion, autocomplete, button, datepicker, dialog, menu, progressbar, slider, spinner, tabs, tooltip</li>
+<li><strong>Efects</strong>: blind, bounce, clip, drop, explode, fade, fold, highlight, pulsate, scale, shake, slide, transfer</li>
+</ul>
+<h1 id="jquery-mobile"><a href="#jquery-mobile"><span class="header-section-number">13</span> jQuery Mobile</a></h1>
+<h2 id="qué-es-jquery-mobile"><a href="#qué-es-jquery-mobile"><span class="header-section-number">13.1</span> ¿Qué es jQuery Mobile?</a></h2>
+<ul>
+<li><p>Son componentes pensados para <strong>aplicaciones móviles</strong>.</p></li>
+<li><p>Están pensados para el manejo de <strong>eventos táctiles</strong>.</p></li>
+</ul>
+<h2 id="ejemplos"><a href="#ejemplos"><span class="header-section-number">13.2</span> Ejemplos</a></h2>
+<ul>
+<li><p>Toda la documentación del site está hecha con el propio framework.</p></li>
+<li><p>Ver <a href="http://jquerymobile.com/">jQuery Mobile</a></p></li>
+<li><p>Ver <a href="http://jquerymobile.com/demos/">jQuery Mobile Documentation</a></p></li>
+</ul>
+</body>
+</html>

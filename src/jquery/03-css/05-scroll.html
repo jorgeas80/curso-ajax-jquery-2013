@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Scrols with jQuery</title>
+    <script src="../jquery.js"></script>
+    <script>
+    $(document).ready(function(){
+      $("#getLeft").click(function(){
+        alert($("div").scrollLeft()+" px");
+      });
+      $("#setLeft").click(function(){
+        $("div").scrollLeft(100);
+      });
+      $("#getTop").click(function(){
+        alert($("div").scrollTop()+" px");
+      });
+      $("#setTop").click(function(){
+        $("div").scrollTop(100);
+      });
+    });
+    </script>
+  </head>
+
+  <body>
+    <h1>Scrols with jQuery</h1>
+    <div style="border:1px solid black;width:100px;height:130px;overflow:auto">
+    This is some text. This is some text. This is some text. This is some text. This is some text.
+    The longest word in the english dictionary is: pneumonoultramicroscopicsilicovolcanoconiosis.
+    </div>
+    <br /><button id="getLeft">Get the horizontal position of the scrollbar</button>
+    <br /><button id="setLeft">Set the horizontal position of the scrollbar to 100px</button>
+    <br /><button id="getTop">Get the vertical position of the scrollbar</button>
+    <br /><button id="setTop">Set the vertical position of the scrollbar to 100px</button>
+  </body>
+
+</html>
