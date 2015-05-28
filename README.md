@@ -1,1 +1,1 @@
-# tutorial-ajax-jquery-2013
+# Curso de AJAX y jQuery (2013)
