@@ -233,7 +233,7 @@ console.log("b="+instancia.b);
 ## ¿Qué es DOM?
 
 - Acrónimo de **Document Object Model**
-- Es un conjunto de utilidades específicamente diseñadas para 
+- Es un conjunto de utilidades específicamente diseñadas para
 **manipular documentos XML, y por extensión documentos XHTML y HTML**.
 - DOM transforma internamente el archivo XML en una estructura más fácil de manejar
 formada por una jerarquía de nodos.
@@ -256,7 +256,7 @@ formada por una jerarquía de nodos.
 var parrafos = document.getElementsByTagName("p");
 var parrafo0 = parrafos[0];
 var nodoSeleccionadoPorId = parrafo0.getElementsById("Id");
-~~~~
+~~~
 
 - Pero como veremos adelante, es mucho más cómodo utilizar **jQuery**.
 
@@ -271,7 +271,7 @@ nuevoP.appendChild(texto);
 
 var anteriorP = document.body.getElementsByTagName("p")[0];
 anteriorP.parentNode.replaceChild(nuevoP, anteriorP);
-~~~~
+~~~
 
 - Pero como veremos adelante, es mucho más cómodo utilizar **jQuery**.
 
@@ -347,16 +347,16 @@ se hace mediante el objeto XMLHttpRequest, disponible en los navegadores actuale
 ~~~{.javascript}
 var http_request = new XMLHttpRequest();
 var url = "http://example.net/jsondata.php"; // Esta URL debería devolver datos JSON
- 
+
 // Descarga los datos JSON del servidor.
 http_request.onreadystatechange = handle_json;
 http_request.open("GET", url, true);
 http_request.send(null);
- 
+
 function handle_json() {
   if (http_request.readyState == 4) {
     if (http_request.status == 200) {
-      var json_data = http_request.responseText; 
+      var json_data = http_request.responseText;
       var the_object = eval("(" + json_data + ")");
     } else {
       alert("Ocurrio un problema con la URL.");
@@ -385,22 +385,22 @@ function handle_json() {
 
 ## Ejemplo API
 
-- **GET** a _http://myhost.com/person_
+- **GET** a http://myhost.com/person
     - Devuelve todas las personas
-- **POST** a _http://myhost.com/person_
+- **POST** a http://myhost.com/person
     - Crear una nueva persona
-- **GET** a _http://myhost.com/person/123_
+- **GET** a http://myhost.com/person/123
     - Devuelve la persona con id=123
-- **PUT** a _http://myhost.com/person/123_
+- **PUT** a http://myhost.com/person/123
     - Actualiza la persona con id=123
-- **DELETE** a _http://myhost.com/person/123_
+- **DELETE** a http://myhost.com/person/123
     - Borra la persona con id=123
 
 ## Manejo de errores
 
 - **Se pueden utilizar los errores del protocolo HTTP**:
 
-    - 200 OK Standard response for successful HTTP requests 
+    - 200 OK Standard response for successful HTTP requests
     - 201 Created
     - 202 Accepted
     - 301 Moved Permanently
@@ -419,7 +419,7 @@ function handle_json() {
 
 - Es una librería JavaScript que **simplifica el manejo del DOM** del HTML cliente.
 
-- También **simplifica el manejo de peticiones AJAX** con el servidor. 
+- También **simplifica el manejo de peticiones AJAX** con el servidor.
 
 - Funciona seleccionando uno o varios elementos y ejecutando una acción sobre ellos.
 
