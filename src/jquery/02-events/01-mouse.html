@@ -7,21 +7,18 @@
     <script src="../jquery.js"></script>
     <script>
     $(document).ready(function(){
+        
       $(document).mousemove(function(e){ 
         $("span").text("X: " + e.pageX + ", Y: " + e.pageY); 
       });
       $("#buttonClick").click(function(){
-        $("#paragraphDoubleClick").slideToggle();
-      });
-      $("#paragraphDoubleClick").dblclick(function(){
-        $("#buttonClick").click();
-      });
-      $("#buttonDoubleClick").dblclick(function(){
         $("#paragraphClick").slideToggle();
       });
-      $("#paragraphClick").click(function(){
-        $("#buttonDoubleClick").dblclick();
+      
+      $("#buttonDoubleClick").dblclick(function(){
+        $("#paragraphDoubleClick").slideToggle();
       });
+      
       $("#button").mouseup(function(){
         $("#buttonEvent").append("up ");
       });
@@ -41,10 +38,10 @@
   <body>
     <p>The mouse is at: <span></span></p>
     <button id="buttonClick">Click to toggle</button>
-    <p id="paragraphDoubleClick">Double click this paragraph to trigger the click event for the button.</p>
+    <p id="paragraphClick">This paragraph will be shown/hidden by clicking the upper button.</p>
     <br />
     <button id="buttonDoubleClick">Double-click to toggle</button>
-    <p id="paragraphClick">Click this paragraph to trigger the dblclick event for the button.</p>
+    <p id="paragraphDoubleClick">This paragraph will be shown/hidden by double clicking the upper button.</p>
     <br />
     <button id="button">Click and release</button>
     <p id="up" style="background-color: yellow">Mouse over to activate mouseup event</p>

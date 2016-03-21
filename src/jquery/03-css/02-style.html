@@ -11,6 +11,11 @@
         $("p").css("color","red");
       });
       $("#get").click(function(){
+          // Es más rápida esta forma:
+          //alert($("p").first().css("color"));
+          // Ver http://jsperf.com/first-vs-first-vs-eq-0
+          
+        // Esta forma es más lenta
         alert($("p:first").css("color"));
       });
 
